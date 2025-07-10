@@ -1,0 +1,10 @@
+{
+  "run_id": "16190648636",
+  "run_number": "1097",
+  "repository": "gazai-io/gazai",
+  "ref": "refs/heads/develop",
+  "sha": "da0bd6b5c7b52b2439c2ab403ac755453890c5ea",
+  "actor": "jtsaich",
+  "workflow": "Playwright E2E Tests & Deploy Reports",
+  "run_url": "https://github.com/gazai-io/gazai/actions/runs/16190648636"
+}
