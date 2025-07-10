@@ -1,0 +1,10 @@
+{
+  "run_id": "16188643842",
+  "run_number": "1094",
+  "repository": "gazai-io/gazai",
+  "ref": "refs/pull/1054/merge",
+  "sha": "9e1536b9b1252b1e650f5d80a2fc2bf2685569eb",
+  "actor": "katie5413",
+  "workflow": "Playwright E2E Tests & Deploy Reports",
+  "run_url": "https://github.com/gazai-io/gazai/actions/runs/16188643842"
+}
