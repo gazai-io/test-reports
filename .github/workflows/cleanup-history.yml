@@ -1,0 +1,65 @@
+name: Cleanup old test reports
+
+on:
+  schedule:
+    # Weekly (Monday 03:00 UTC)
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      retention_days:
+        description: "Keep reports newer than N days"
+        required: false
+        default: "7"
+      min_keep:
+        description: "Always keep at least the newest N reports"
+        required: false
+        default: "20"
+      dry_run:
+        description: "Do not delete or commit changes"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cleanup-history
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Cleanup history
+        env:
+          RETENTION_DAYS: ${{ inputs.retention_days || '7' }}
+          MIN_KEEP: ${{ inputs.min_keep || '20' }}
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+        run: node scripts/cleanup-history.mjs
+
+      - name: Commit changes
+        env:
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+        run: |
+          if [ "${DRY_RUN}" = "true" ]; then
+            echo "DRY_RUN=true, skip commit."
+            exit 0
+          fi
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git add history scripts
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "chore: cleanup old test reports"
+          git push origin HEAD:${GITHUB_REF_NAME}
