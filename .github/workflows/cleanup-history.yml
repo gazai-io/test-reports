@@ -30,8 +30,11 @@ jobs:
   cleanup:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout gh-pages
         uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -40,14 +43,14 @@ jobs:
 
       - name: Cleanup history
         env:
-          RETENTION_DAYS: ${{ inputs.retention_days || '7' }}
-          MIN_KEEP: ${{ inputs.min_keep || '20' }}
-          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+          RETENTION_DAYS: ${{ github.event.inputs.retention_days || '7' }}
+          MIN_KEEP: ${{ github.event.inputs.min_keep || '20' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
         run: node scripts/cleanup-history.mjs
 
       - name: Commit changes
         env:
-          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
         run: |
           if [ "${DRY_RUN}" = "true" ]; then
             echo "DRY_RUN=true, skip commit."
@@ -62,4 +65,4 @@ jobs:
           git add history scripts
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -m "chore: cleanup old test reports"
-          git push origin HEAD:${GITHUB_REF_NAME}
+          git push origin HEAD:gh-pages
