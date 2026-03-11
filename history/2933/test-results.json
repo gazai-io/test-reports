@@ -1,0 +1,2588 @@
+{
+  "config": {
+    "configFile": "/home/runner/work/gazai/gazai/playwright.config.ts",
+    "rootDir": "/home/runner/work/gazai/gazai/tests/e2e",
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": "/home/runner/work/gazai/gazai/tests/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 10,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/gazai-io/gazai/commit/3352c0aad91c30b5551ecf8de09962fdbe2ad57b",
+        "commitHash": "3352c0aad91c30b5551ecf8de09962fdbe2ad57b",
+        "prHref": "https://github.com/gazai-io/gazai/pull/1401",
+        "prTitle": "feat(canvas): add 2K/4K resolution support for GAZAI chan chat",
+        "prBaseHash": "01853e8261dae40a51257d8b0ebd338dd5cb6ecd",
+        "buildHref": "https://github.com/gazai-io/gazai/actions/runs/22942364990"
+      },
+      "gitCommit": {
+        "shortHash": "3352c0a",
+        "hash": "3352c0aad91c30b5551ecf8de09962fdbe2ad57b",
+        "subject": "Merge 323021c454bc46d27d931664a6d1a5da9f60a219 into 01853e8261dae40a51257d8b0ebd338dd5cb6ecd",
+        "body": "Merge 323021c454bc46d27d931664a6d1a5da9f60a219 into 01853e8261dae40a51257d8b0ebd338dd5cb6ecd\n",
+        "author": {
+          "name": "kaipochen-gazai",
+          "email": "kaipochen@gazai.io",
+          "time": 1773215555000
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "time": 1773215555000
+        },
+        "branch": "HEAD"
+      },
+      "gitDiff": "diff --git a/app/api/chat/route.ts b/app/api/chat/route.ts\nindex 6749e35..79df252 100644\n--- a/app/api/chat/route.ts\n+++ b/app/api/chat/route.ts\n@@ -269,6 +269,8 @@ export async function POST(req: Request) {\n     const defaultModel = await getBaseModelByFileName(DEFAULT_BASE_MODEL);\n     const imageGenerationCost =\n       defaultModel?.tokenCost ?? IMAGE_GENERATION_COST;\n+    const imageGenerationCost2k = defaultModel?.tokenCost2k;\n+    const imageGenerationCost4k = defaultModel?.tokenCost4k;\n \n     // Get the base URL from environment variable\n     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || GAZAI_HOME_PAGE;\n@@ -293,7 +295,7 @@ Your task is to help users with canvas-related work: create panels, generate ima\n \n You have access to the following tools:\n - createPanel: Creates a panel on the canvas with the specified dimensions. Panels are optional containers for organizing content — they are NOT required for image generation.\n-- generateImage: Generates an image and places it directly on the canvas. Does NOT require a panel. Returns a seed value for character consistency. CRITICAL: Pass the user's prompt in their own language — if they write in Chinese/Japanese/other, the prompt parameter must be in that language. Never translate the prompt to English.\n+- generateImage: Generates an image and places it directly on the canvas. Does NOT require a panel. Returns a seed value for character consistency. Supports resolution selection (1K/2K/4K). CRITICAL: Pass the user's prompt in their own language — if they write in Chinese/Japanese/other, the prompt parameter must be in that language. Never translate the prompt to English.\n - createText: Adds text to the canvas or to a specific panel with language-specific formatting\n \n IMPORTANT: Scope Limitation and Polite Refusal\n@@ -314,14 +316,18 @@ IMPORTANT: Scope Limitation and Polite Refusal\n - Always stay focused on your core mission of assisting with Gazai's canvas functionality and creative development\n \n IMPORTANT: Token Cost and User Consent for Image Generation\n-- Each image generation using generateImage tool consumes ${imageGenerationCost} tokens\n-- Before using the generateImage tool, you MUST:\n-  1. Inform the user about the token cost (${imageGenerationCost} tokens per image)\n-  2. Ask for explicit user consent before proceeding\n-  3. Only proceed with image generation after receiving clear user approval\n-- Example consent request: \"I need to generate an image which will cost ${imageGenerationCost} tokens. Do you want me to proceed with the image generation?\"\n+- Image generation costs depend on the selected resolution:\n+  * 1K (standard): ${imageGenerationCost} tokens per image\n+${imageGenerationCost2k ? `  * 2K (high resolution): ${imageGenerationCost2k} tokens per image\\n` : ''}${imageGenerationCost4k ? `  * 4K (ultra high resolution): ${imageGenerationCost4k} tokens per image\\n` : ''}- Before using the generateImage tool, you MUST:\n+  1. Inform the user about the available resolutions and their token costs\n+  2. Ask which resolution they prefer (default to 1K if they don't specify)\n+  3. Ask for explicit user consent before proceeding\n+  4. Only proceed with image generation after receiving clear user approval\n+- Example consent request: \"I can generate the image at different resolutions: 1K (${imageGenerationCost} tokens)${imageGenerationCost2k ? `, 2K (${imageGenerationCost2k} tokens)` : ''}${imageGenerationCost4k ? `, 4K (${imageGenerationCost4k} tokens)` : ''}. Which resolution would you like?\"\n - If the user does not give explicit consent, do not use the generateImage tool\n - Always be transparent about token costs and respect user decisions\n+- If the user has previously chosen a resolution in the same conversation, remember their preference for subsequent generations\n+- IMPORTANT: When the image contains text (e.g. posters, banners, titles, captions, signs, logos with text), strongly recommend 4K resolution to the user. Text rendered at 1K or 2K often appears blurry or illegible. Explain that 4K produces much clearer, sharper text in generated images.\n \n IMPORTANT: Object Limit Handling\n - Users have object limits based on their membership plan\ndiff --git a/hooks/use-canvas-ai-tools.ts b/hooks/use-canvas-ai-tools.ts\nindex 7bf022a..c65c9c6 100644\n--- a/hooks/use-canvas-ai-tools.ts\n+++ b/hooks/use-canvas-ai-tools.ts\n@@ -19,10 +19,14 @@ import {\n } from '@/constants/chat';\n import { BASE_MODEL_NANO_BANANA_PRO } from '@/constants/image';\n import { BaseModelWithRecommendedParameters } from '@/data/base-model';\n-import { ImageGenerationMode } from '@/types/image-generation';\n+import {\n+  ImageGenerationMode,\n+  GeminiResolution\n+} from '@/types/image-generation';\n import { useParallelGenerationStore } from '@/store/parallel-generation-store';\n import { useCanvasStore } from '@/store/canvas-store';\n import { useCanvasAiChatStore } from '@/store/canvas/canvas-ai-chat';\n+import { imageDimensions } from '@/components/canvas/generate-info/dimension-select';\n \n import { useHistoryState } from './use-history-state';\n import { useSelectionState } from './use-selection-state';\n@@ -583,11 +587,33 @@ export function useCanvasAITools(options?: {\n           }\n \n           const prompt = args.prompt as string;\n-          const width = args.width as number;\n-          const height = args.height as number;\n           const seed = (args.seed as number) || getRandomSeed();\n           const aspectRatio = args.aspectRatio as string;\n \n+          // Map resolution string from tool call to GeminiResolution enum\n+          const resolutionStr = args.resolution as string | undefined;\n+          const resolution = resolutionStr\n+            ? (Object.values(GeminiResolution).find(\n+                (v) => v === resolutionStr\n+              ) as GeminiResolution | undefined)\n+            : undefined;\n+\n+          // Derive width/height from aspectRatio + resolution instead of using\n+          // the tool's default values (which are always 1024x1024 regardless of ratio).\n+          // 1. Look up base 1K dimensions from the imageDimensions table\n+          // 2. Scale up for 2K (√2 ≈ 1.414x) or 4K (2x)\n+          const baseDim = imageDimensions.find((d) => d.ratio === aspectRatio);\n+          const baseWidth = baseDim?.width ?? 1024;\n+          const baseHeight = baseDim?.height ?? 1024;\n+          const resolutionMultiplier =\n+            resolution === GeminiResolution.RESOLUTION_4K\n+              ? 2\n+              : resolution === GeminiResolution.RESOLUTION_2K\n+                ? Math.SQRT2\n+                : 1;\n+          const width = Math.round(baseWidth * resolutionMultiplier);\n+          const height = Math.round(baseHeight * resolutionMultiplier);\n+\n           if (typeof prompt !== 'string') {\n             throw new Error('Invalid prompt: prompt must be a string');\n           }\n@@ -625,10 +651,29 @@ export function useCanvasAITools(options?: {\n           }\n \n           // Check if user has enough tokens (before S3 uploads to fail fast)\n+          // Use resolution-specific cost if available (2K/4K cost more)\n           const baseModel = BASE_MODEL_NANO_BANANA_PRO;\n-          const modelCost =\n-            baseModels?.find((m) => m.fileName === baseModel)?.tokenCost ??\n-            IMAGE_GENERATION_COST;\n+          const baseModelData = baseModels?.find(\n+            (m) => m.fileName === baseModel\n+          );\n+          // Determine cost based on resolution.\n+          // When the resolution-specific cost is null (not yet configured in DB),\n+          // fallback to the most expensive known cost to avoid undercharging.\n+          const defaultCost =\n+            baseModelData?.tokenCost ?? IMAGE_GENERATION_COST;\n+          const highestKnownCost = Math.max(\n+            defaultCost,\n+            baseModelData?.tokenCost2k ?? 0,\n+            baseModelData?.tokenCost4k ?? 0\n+          );\n+          let modelCost: number;\n+          if (resolution === GeminiResolution.RESOLUTION_2K) {\n+            modelCost = baseModelData?.tokenCost2k ?? highestKnownCost;\n+          } else if (resolution === GeminiResolution.RESOLUTION_4K) {\n+            modelCost = baseModelData?.tokenCost4k ?? highestKnownCost;\n+          } else {\n+            modelCost = defaultCost;\n+          }\n           if (tokenBalance < modelCost) {\n             return {\n               success: false,\n@@ -672,6 +717,7 @@ export function useCanvasAITools(options?: {\n             baseModel,\n             seed,\n             aspectRatio,\n+            resolution,\n             // Target: always new image (placeholder will be created by the hook)\n             target: {\n               type: 'image' as const,\ndiff --git a/hooks/use-image-generation.ts b/hooks/use-image-generation.ts\nindex ad921d7..66e8e39 100644\n--- a/hooks/use-image-generation.ts\n+++ b/hooks/use-image-generation.ts\n@@ -1340,10 +1340,20 @@ export function useImageGeneration({\n                 }\n \n                 // For base64 data URLs, apply compression\n+                // Scale maxWidth/maxHeight to match the requested resolution\n+                // so higher-res images are not downscaled by compression defaults\n+                const maxDimension =\n+                  resolution === GeminiResolution.RESOLUTION_4K\n+                    ? 4096\n+                    : resolution === GeminiResolution.RESOLUTION_2K\n+                      ? 2048\n+                      : 1920;\n                 const MAX_SIZE = 10 * 1024 * 1024; // 10MB\n                 try {\n                   const compressionResult = await compressImage(imageSrc, {\n                     maxSize: MAX_SIZE,\n+                    maxWidth: maxDimension,\n+                    maxHeight: maxDimension,\n                     initialQuality: 0.8,\n                     minQuality: 0.4,\n                     qualityStep: 0.1,\ndiff --git a/tools/generate-image-tool.ts b/tools/generate-image-tool.ts\nindex cbb6dd6..442f2cc 100644\n--- a/tools/generate-image-tool.ts\n+++ b/tools/generate-image-tool.ts\n@@ -21,6 +21,13 @@ export const generateImageTool = tool({\n       .optional()\n       .default('1:1')\n       .describe(\"Aspect ratio of the image (optional, default: '1:1')\"),\n+    resolution: z\n+      .enum(['1K', '2K', '4K'])\n+      .optional()\n+      .default('1K')\n+      .describe(\n+        \"Output resolution of the generated image. '1K' is standard (default), '2K' and '4K' produce higher resolution images but cost more tokens. Ask the user which resolution they prefer before generating.\"\n+      ),\n     seed: z\n       .number()\n       .optional()",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/gazai/gazai/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/gazai-io/gazai/commit/3352c0aad91c30b5551ecf8de09962fdbe2ad57b",
+            "commitHash": "3352c0aad91c30b5551ecf8de09962fdbe2ad57b",
+            "prHref": "https://github.com/gazai-io/gazai/pull/1401",
+            "prTitle": "feat(canvas): add 2K/4K resolution support for GAZAI chan chat",
+            "prBaseHash": "01853e8261dae40a51257d8b0ebd338dd5cb6ecd",
+            "buildHref": "https://github.com/gazai-io/gazai/actions/runs/22942364990"
+          },
+          "gitCommit": {
+            "shortHash": "3352c0a",
+            "hash": "3352c0aad91c30b5551ecf8de09962fdbe2ad57b",
+            "subject": "Merge 323021c454bc46d27d931664a6d1a5da9f60a219 into 01853e8261dae40a51257d8b0ebd338dd5cb6ecd",
+            "body": "Merge 323021c454bc46d27d931664a6d1a5da9f60a219 into 01853e8261dae40a51257d8b0ebd338dd5cb6ecd\n",
+            "author": {
+              "name": "kaipochen-gazai",
+              "email": "kaipochen@gazai.io",
+              "time": 1773215555000
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com",
+              "time": 1773215555000
+            },
+            "branch": "HEAD"
+          },
+          "gitDiff": "diff --git a/app/api/chat/route.ts b/app/api/chat/route.ts\nindex 6749e35..79df252 100644\n--- a/app/api/chat/route.ts\n+++ b/app/api/chat/route.ts\n@@ -269,6 +269,8 @@ export async function POST(req: Request) {\n     const defaultModel = await getBaseModelByFileName(DEFAULT_BASE_MODEL);\n     const imageGenerationCost =\n       defaultModel?.tokenCost ?? IMAGE_GENERATION_COST;\n+    const imageGenerationCost2k = defaultModel?.tokenCost2k;\n+    const imageGenerationCost4k = defaultModel?.tokenCost4k;\n \n     // Get the base URL from environment variable\n     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || GAZAI_HOME_PAGE;\n@@ -293,7 +295,7 @@ Your task is to help users with canvas-related work: create panels, generate ima\n \n You have access to the following tools:\n - createPanel: Creates a panel on the canvas with the specified dimensions. Panels are optional containers for organizing content — they are NOT required for image generation.\n-- generateImage: Generates an image and places it directly on the canvas. Does NOT require a panel. Returns a seed value for character consistency. CRITICAL: Pass the user's prompt in their own language — if they write in Chinese/Japanese/other, the prompt parameter must be in that language. Never translate the prompt to English.\n+- generateImage: Generates an image and places it directly on the canvas. Does NOT require a panel. Returns a seed value for character consistency. Supports resolution selection (1K/2K/4K). CRITICAL: Pass the user's prompt in their own language — if they write in Chinese/Japanese/other, the prompt parameter must be in that language. Never translate the prompt to English.\n - createText: Adds text to the canvas or to a specific panel with language-specific formatting\n \n IMPORTANT: Scope Limitation and Polite Refusal\n@@ -314,14 +316,18 @@ IMPORTANT: Scope Limitation and Polite Refusal\n - Always stay focused on your core mission of assisting with Gazai's canvas functionality and creative development\n \n IMPORTANT: Token Cost and User Consent for Image Generation\n-- Each image generation using generateImage tool consumes ${imageGenerationCost} tokens\n-- Before using the generateImage tool, you MUST:\n-  1. Inform the user about the token cost (${imageGenerationCost} tokens per image)\n-  2. Ask for explicit user consent before proceeding\n-  3. Only proceed with image generation after receiving clear user approval\n-- Example consent request: \"I need to generate an image which will cost ${imageGenerationCost} tokens. Do you want me to proceed with the image generation?\"\n+- Image generation costs depend on the selected resolution:\n+  * 1K (standard): ${imageGenerationCost} tokens per image\n+${imageGenerationCost2k ? `  * 2K (high resolution): ${imageGenerationCost2k} tokens per image\\n` : ''}${imageGenerationCost4k ? `  * 4K (ultra high resolution): ${imageGenerationCost4k} tokens per image\\n` : ''}- Before using the generateImage tool, you MUST:\n+  1. Inform the user about the available resolutions and their token costs\n+  2. Ask which resolution they prefer (default to 1K if they don't specify)\n+  3. Ask for explicit user consent before proceeding\n+  4. Only proceed with image generation after receiving clear user approval\n+- Example consent request: \"I can generate the image at different resolutions: 1K (${imageGenerationCost} tokens)${imageGenerationCost2k ? `, 2K (${imageGenerationCost2k} tokens)` : ''}${imageGenerationCost4k ? `, 4K (${imageGenerationCost4k} tokens)` : ''}. Which resolution would you like?\"\n - If the user does not give explicit consent, do not use the generateImage tool\n - Always be transparent about token costs and respect user decisions\n+- If the user has previously chosen a resolution in the same conversation, remember their preference for subsequent generations\n+- IMPORTANT: When the image contains text (e.g. posters, banners, titles, captions, signs, logos with text), strongly recommend 4K resolution to the user. Text rendered at 1K or 2K often appears blurry or illegible. Explain that 4K produces much clearer, sharper text in generated images.\n \n IMPORTANT: Object Limit Handling\n - Users have object limits based on their membership plan\ndiff --git a/hooks/use-canvas-ai-tools.ts b/hooks/use-canvas-ai-tools.ts\nindex 7bf022a..c65c9c6 100644\n--- a/hooks/use-canvas-ai-tools.ts\n+++ b/hooks/use-canvas-ai-tools.ts\n@@ -19,10 +19,14 @@ import {\n } from '@/constants/chat';\n import { BASE_MODEL_NANO_BANANA_PRO } from '@/constants/image';\n import { BaseModelWithRecommendedParameters } from '@/data/base-model';\n-import { ImageGenerationMode } from '@/types/image-generation';\n+import {\n+  ImageGenerationMode,\n+  GeminiResolution\n+} from '@/types/image-generation';\n import { useParallelGenerationStore } from '@/store/parallel-generation-store';\n import { useCanvasStore } from '@/store/canvas-store';\n import { useCanvasAiChatStore } from '@/store/canvas/canvas-ai-chat';\n+import { imageDimensions } from '@/components/canvas/generate-info/dimension-select';\n \n import { useHistoryState } from './use-history-state';\n import { useSelectionState } from './use-selection-state';\n@@ -583,11 +587,33 @@ export function useCanvasAITools(options?: {\n           }\n \n           const prompt = args.prompt as string;\n-          const width = args.width as number;\n-          const height = args.height as number;\n           const seed = (args.seed as number) || getRandomSeed();\n           const aspectRatio = args.aspectRatio as string;\n \n+          // Map resolution string from tool call to GeminiResolution enum\n+          const resolutionStr = args.resolution as string | undefined;\n+          const resolution = resolutionStr\n+            ? (Object.values(GeminiResolution).find(\n+                (v) => v === resolutionStr\n+              ) as GeminiResolution | undefined)\n+            : undefined;\n+\n+          // Derive width/height from aspectRatio + resolution instead of using\n+          // the tool's default values (which are always 1024x1024 regardless of ratio).\n+          // 1. Look up base 1K dimensions from the imageDimensions table\n+          // 2. Scale up for 2K (√2 ≈ 1.414x) or 4K (2x)\n+          const baseDim = imageDimensions.find((d) => d.ratio === aspectRatio);\n+          const baseWidth = baseDim?.width ?? 1024;\n+          const baseHeight = baseDim?.height ?? 1024;\n+          const resolutionMultiplier =\n+            resolution === GeminiResolution.RESOLUTION_4K\n+              ? 2\n+              : resolution === GeminiResolution.RESOLUTION_2K\n+                ? Math.SQRT2\n+                : 1;\n+          const width = Math.round(baseWidth * resolutionMultiplier);\n+          const height = Math.round(baseHeight * resolutionMultiplier);\n+\n           if (typeof prompt !== 'string') {\n             throw new Error('Invalid prompt: prompt must be a string');\n           }\n@@ -625,10 +651,29 @@ export function useCanvasAITools(options?: {\n           }\n \n           // Check if user has enough tokens (before S3 uploads to fail fast)\n+          // Use resolution-specific cost if available (2K/4K cost more)\n           const baseModel = BASE_MODEL_NANO_BANANA_PRO;\n-          const modelCost =\n-            baseModels?.find((m) => m.fileName === baseModel)?.tokenCost ??\n-            IMAGE_GENERATION_COST;\n+          const baseModelData = baseModels?.find(\n+            (m) => m.fileName === baseModel\n+          );\n+          // Determine cost based on resolution.\n+          // When the resolution-specific cost is null (not yet configured in DB),\n+          // fallback to the most expensive known cost to avoid undercharging.\n+          const defaultCost =\n+            baseModelData?.tokenCost ?? IMAGE_GENERATION_COST;\n+          const highestKnownCost = Math.max(\n+            defaultCost,\n+            baseModelData?.tokenCost2k ?? 0,\n+            baseModelData?.tokenCost4k ?? 0\n+          );\n+          let modelCost: number;\n+          if (resolution === GeminiResolution.RESOLUTION_2K) {\n+            modelCost = baseModelData?.tokenCost2k ?? highestKnownCost;\n+          } else if (resolution === GeminiResolution.RESOLUTION_4K) {\n+            modelCost = baseModelData?.tokenCost4k ?? highestKnownCost;\n+          } else {\n+            modelCost = defaultCost;\n+          }\n           if (tokenBalance < modelCost) {\n             return {\n               success: false,\n@@ -672,6 +717,7 @@ export function useCanvasAITools(options?: {\n             baseModel,\n             seed,\n             aspectRatio,\n+            resolution,\n             // Target: always new image (placeholder will be created by the hook)\n             target: {\n               type: 'image' as const,\ndiff --git a/hooks/use-image-generation.ts b/hooks/use-image-generation.ts\nindex ad921d7..66e8e39 100644\n--- a/hooks/use-image-generation.ts\n+++ b/hooks/use-image-generation.ts\n@@ -1340,10 +1340,20 @@ export function useImageGeneration({\n                 }\n \n                 // For base64 data URLs, apply compression\n+                // Scale maxWidth/maxHeight to match the requested resolution\n+                // so higher-res images are not downscaled by compression defaults\n+                const maxDimension =\n+                  resolution === GeminiResolution.RESOLUTION_4K\n+                    ? 4096\n+                    : resolution === GeminiResolution.RESOLUTION_2K\n+                      ? 2048\n+                      : 1920;\n                 const MAX_SIZE = 10 * 1024 * 1024; // 10MB\n                 try {\n                   const compressionResult = await compressImage(imageSrc, {\n                     maxSize: MAX_SIZE,\n+                    maxWidth: maxDimension,\n+                    maxHeight: maxDimension,\n                     initialQuality: 0.8,\n                     minQuality: 0.4,\n                     qualityStep: 0.1,\ndiff --git a/tools/generate-image-tool.ts b/tools/generate-image-tool.ts\nindex cbb6dd6..442f2cc 100644\n--- a/tools/generate-image-tool.ts\n+++ b/tools/generate-image-tool.ts\n@@ -21,6 +21,13 @@ export const generateImageTool = tool({\n       .optional()\n       .default('1:1')\n       .describe(\"Aspect ratio of the image (optional, default: '1:1')\"),\n+    resolution: z\n+      .enum(['1K', '2K', '4K'])\n+      .optional()\n+      .default('1K')\n+      .describe(\n+        \"Output resolution of the generated image. '1K' is standard (default), '2K' and '4K' produce higher resolution images but cost more tokens. Ask the user which resolution they prefer before generating.\"\n+      ),\n     seed: z\n       .number()\n       .optional()",
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/runner/work/gazai/gazai/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report",
+          "host": "0.0.0.0"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "runAgents": "none",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.58.0",
+    "workers": 1,
+    "webServer": {
+      "command": "pnpm start",
+      "url": "http://localhost:3000",
+      "reuseExistingServer": false,
+      "timeout": 300000,
+      "stdout": "ignore",
+      "stderr": "pipe",
+      "env": {
+        "NODE_ENV": "test",
+        "NEXT_PUBLIC_APP_ENV": "test",
+        "NODE_OPTIONS": "--max-old-space-size=4096"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "canvas/canvas-basic.spec.ts",
+      "file": "canvas/canvas-basic.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas 基本功能測試",
+          "file": "canvas/canvas-basic.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "未登入時不能使用 Canvas 功能",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4716,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 未登入狀態驗證通過\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:00:28.787Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "73589ae0195e21f692b3-f387c921175121ce4a7d",
+              "file": "canvas/canvas-basic.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "登入後可以新增畫布",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 25952,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 成功新增畫布: cmmlr1u0o000113w8nd5i4t4s\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmmlr1u0o000113w8nd5i4t4s\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:00:33.641Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "73589ae0195e21f692b3-7861ced6043ede99391e",
+              "file": "canvas/canvas-basic.spec.ts",
+              "line": 37,
+              "column": 7
+            },
+            {
+              "title": "可以編輯畫布的名稱",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 35315,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 成功編輯畫布名稱: 測試畫布名稱 1773216076069\n"
+                        },
+                        {
+                          "text": "✅ 畫布名稱驗證成功: 測試畫布名稱 1773216076069\n"
+                        },
+                        {
+                          "text": "✅ 成功編輯畫布名稱: 測試畫布名稱 1773216076069\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmmlr2e07000313w88eioaqiz\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:00:59.641Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "73589ae0195e21f692b3-157a0f43794c633ac4fb",
+              "file": "canvas/canvas-basic.spec.ts",
+              "line": 60,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-layout.spec.ts",
+      "file": "canvas/canvas-layout.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Layout - No Global Navigation",
+          "file": "canvas/canvas-layout.spec.ts",
+          "line": 13,
+          "column": 6,
+          "specs": [
+            {
+              "title": "canvas list shows global nav; detail page has no header/sidebar, full viewport, i18n and toast",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 31553,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 成功編輯畫布名稱: Layout Test 1773216291410\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:04:13.187Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "380abb7e1b5c7152a3d8-c9eeb4ff6da99ac77f5a",
+              "file": "canvas/canvas-layout.spec.ts",
+              "line": 20,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-panel.spec.ts",
+      "file": "canvas/canvas-object-panel.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Panel 物件操作測試",
+          "file": "canvas/canvas-object-panel.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "可以建立新的 panel",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 24379,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: panel\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: panel\n"
+                        },
+                        {
+                          "text": "🖱️  拖拽建立面板: 起始位置 (400, 0), 尺寸 300x300\n"
+                        },
+                        {
+                          "text": "🖱️  拖拽操作: (400, 0) → (700, 300)\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: panel\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：建立新的 panel\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:05:00.758Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "98d107912f2c6a1752f9-3d52db283f93b4f4441f",
+              "file": "canvas/canvas-object-panel.spec.ts",
+              "line": 18,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-shape.spec.ts",
+      "file": "canvas/canvas-object-shape.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Shape 物件操作測試",
+          "file": "canvas/canvas-object-shape.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "可以建立圓形、矩形、星形與多邊形",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 36479,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: circle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (500, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (500, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (500, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (500, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (500, 300)\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: rectangle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (550, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (550, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (550, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (550, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (550, 300)\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: star\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (600, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (600, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (600, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (600, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (600, 300)\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: polygon\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (650, 400), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (650, 400) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (650, 400)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (650, 400)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (650, 400)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:05:25.170Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f5fb6adffaa126df267-c0a2091c3af40b17116a",
+              "file": "canvas/canvas-object-shape.spec.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "可以移動 shape 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 27274,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: rectangle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "🖱️  移動物件: (400, 300) → (450, 350)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:06:01.672Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f5fb6adffaa126df267-5a2a9fc445553a1a5d5a",
+              "file": "canvas/canvas-object-shape.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "可以刪除 shape 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 24551,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: circle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (500, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (500, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (500, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (500, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (500, 300)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 0\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:06:28.970Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f5fb6adffaa126df267-de54b0b4b8bd7fba741d",
+              "file": "canvas/canvas-object-shape.spec.ts",
+              "line": 35,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-speech.spec.ts",
+      "file": "canvas/canvas-object-speech.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas 文字物件操作測試",
+          "file": "canvas/canvas-object-speech.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "綜合測試：所有功能組合使用",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 31692,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增文字，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: speech\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: speech\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ 文字字體大小已修改為: 18\n"
+                        },
+                        {
+                          "text": "✅ 文字顏色已修改為: #FF6600\n"
+                        },
+                        {
+                          "text": "🔍 確保屬性面板可訪問...\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 嘗試通過 Escape 關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 屬性面板現在可以互動\n"
+                        },
+                        {
+                          "text": "✅ 文字方向已修改為: vertical\n"
+                        },
+                        {
+                          "text": "✅ 文字對齊已修改為: center\n"
+                        },
+                        {
+                          "text": "🔄 粗體狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "🔄 斜體狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "🔄 底線狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "✅ 文字樣式已修改完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡樣式已修改為: cloud-1\n"
+                        },
+                        {
+                          "text": "✅ 氣泡背景色已修改為: #FFFF00\n"
+                        },
+                        {
+                          "text": "✅ 氣泡匡線顏色已修改為: #FF0000\n"
+                        },
+                        {
+                          "text": "✅ 氣泡尾巴已開啟\n"
+                        },
+                        {
+                          "text": "🔍 開始驗證所有設置...\n"
+                        },
+                        {
+                          "text": "✅ 文字內容驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字顏色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字方向驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字對齊驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字樣式驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡背景色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡框線顏色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡尾巴狀態驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 所有設置驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：所有功能綜合使用\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:06:53.549Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dcca6fd7c28e4bbb7850-af2110b188b81dc2d7d0",
+              "file": "canvas/canvas-object-speech.spec.ts",
+              "line": 16,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-push-sidebar.spec.ts",
+      "file": "canvas/canvas-push-sidebar.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Push-Style Sidebar & User Menu",
+          "file": "canvas/canvas-push-sidebar.spec.ts",
+          "line": 19,
+          "column": 6,
+          "specs": [
+            {
+              "title": "layers panel should be collapsed by default with bottom bar visible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 19729,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers panel collapsed by default, bottom bar visible\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:07:25.272Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-223e8f1b468ce3931514",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 28,
+              "column": 7
+            },
+            {
+              "title": "clicking layers icon should expand panel as overlay",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 21905,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers panel expands as overlay without pushing canvas\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:07:45.022Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-9675a6156dd94ea5a59b",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "pin/collapse toggle should close the expanded panel",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 24022,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Pin toggle collapses the layers panel\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:08:06.948Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-2c32adaf22c3b8419a11",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 78,
+              "column": 7
+            },
+            {
+              "title": "clicking outside expanded panel should NOT collapse it",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 23543,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Clicking outside does NOT collapse the panel\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:08:30.993Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-16177cc7eb22065eef19",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 108,
+              "column": 7
+            },
+            {
+              "title": "bottom bar should show user avatar and token count",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 22911,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Bottom bar shows user avatar and token count\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:08:54.557Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-0abe6e03ab77c8641f72",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 129,
+              "column": 7
+            },
+            {
+              "title": "clicking user avatar should open upward dropdown menu",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 21957,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ User avatar click opens upward dropdown\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:09:17.496Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-6c0db4e5efc32303adb3",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 143,
+              "column": 7
+            },
+            {
+              "title": "bottom bar should always be visible regardless of panel state",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 22805,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Bottom bar always visible regardless of panel state\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:09:39.473Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-24e858b42a3ed2b87a18",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 158,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "login/login-flow.spec.ts",
+      "file": "login/login-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "登入流程測試",
+          "file": "login/login-flow.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "完整的登入流程 - 從首頁到登入成功",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 24155,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 登入流程測試完成：所有步驟都成功執行\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:01:34.977Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9baefabce98ea24ee76d-87de03f1a3c1c8406c2f",
+              "file": "login/login-flow.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "登入彈窗正確顯示所有選項",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9990,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:01:59.153Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9baefabce98ea24ee76d-3d7a04ac2ff82d94c538",
+              "file": "login/login-flow.spec.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "電子郵件登入表單正確顯示",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9506,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-11T08:02:09.165Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9baefabce98ea24ee76d-9e834c32b318155dc866",
+              "file": "login/login-flow.spec.ts",
+              "line": 36,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "side-bar/full-sidebar.spec.ts",
+      "file": "side-bar/full-sidebar.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Full Sidebar Mode",
+          "file": "side-bar/full-sidebar.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "未登入用戶",
+              "file": "side-bar/full-sidebar.spec.ts",
+              "line": 4,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "應該顯示 sidebar 元素",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 9061,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 導航到首頁\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 已成功導航到首頁\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 檢查 sidebar 元素是否顯示\n"
+                            },
+                            {
+                              "text": "📍 已定位 sidebar 元素\n"
+                            },
+                            {
+                              "text": "✅ 測試通過: sidebar 元素已顯示\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:02:18.693Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-76024414219fa019cf86",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 23,
+                  "column": 9
+                },
+                {
+                  "title": "主要導航連結應該正確顯示",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 8464,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 導航到首頁\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 已成功導航到首頁\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 檢查主要導航連結是否正確顯示\n"
+                            },
+                            {
+                              "text": "📋 開始檢查 4 個主要導航連結\n"
+                            },
+                            {
+                              "text": "🔍 檢查 Canvas 連結 (sidebar-canvas)\n"
+                            },
+                            {
+                              "text": "✅ Canvas 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查 AI 工具 連結 (sidebar-ai-tools)\n"
+                            },
+                            {
+                              "text": "✅ AI 工具 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查 動畫創建 連結 (sidebar-animation)\n"
+                            },
+                            {
+                              "text": "✅ 動畫創建 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查 生成圖片 連結 (sidebar-generate)\n"
+                            },
+                            {
+                              "text": "✅ 生成圖片 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "✅ 測試通過: 所有主要導航連結都正確顯示\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:02:27.767Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-26bd190ab9ae02ab382c",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 32,
+                  "column": 9
+                },
+                {
+                  "title": "社交媒體連結應該正確顯示",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 8564,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 導航到首頁\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 已成功導航到首頁\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 檢查社交媒體連結是否正確顯示\n"
+                            },
+                            {
+                              "text": "📍 檢查社交媒體區域是否存在\n"
+                            },
+                            {
+                              "text": "✅ 社交媒體區域已顯示\n"
+                            },
+                            {
+                              "text": "📋 開始檢查 5 個社交媒體連結\n"
+                            },
+                            {
+                              "text": "🔍 檢查 TikTok 連結 (sidebar-tiktok)\n"
+                            },
+                            {
+                              "text": "👁️ TikTok 連結可見性: \u001b[33mtrue\u001b[39m\n"
+                            },
+                            {
+                              "text": "✅ TikTok 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查 Discord 連結 (sidebar-discord)\n"
+                            },
+                            {
+                              "text": "👁️ Discord 連結可見性: \u001b[33mtrue\u001b[39m\n"
+                            },
+                            {
+                              "text": "✅ Discord 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查 X (Twitter) 連結 (sidebar-x)\n"
+                            },
+                            {
+                              "text": "👁️ X (Twitter) 連結可見性: \u001b[33mtrue\u001b[39m\n"
+                            },
+                            {
+                              "text": "✅ X (Twitter) 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查 YouTube 連結 (sidebar-youtube)\n"
+                            },
+                            {
+                              "text": "👁️ YouTube 連結可見性: \u001b[33mtrue\u001b[39m\n"
+                            },
+                            {
+                              "text": "✅ YouTube 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查 Instagram 連結 (sidebar-instagram)\n"
+                            },
+                            {
+                              "text": "👁️ Instagram 連結可見性: \u001b[33mtrue\u001b[39m\n"
+                            },
+                            {
+                              "text": "✅ Instagram 連結已正確顯示\n"
+                            },
+                            {
+                              "text": "✅ 測試完成: 社交媒體連結檢查完畢\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:02:36.246Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-a8ca1975fbe3ba7105f4",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 57,
+                  "column": 9
+                },
+                {
+                  "title": "受保護的連結在未登入時不應顯示",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 8632,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 導航到首頁\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 已成功導航到首頁\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 受保護連結在未登入時的行為\n"
+                            },
+                            {
+                              "text": "🚪 執行登出操作\n"
+                            },
+                            {
+                              "text": "✅ 登出完成\n"
+                            },
+                            {
+                              "text": "📋 檢查 2 個受保護連結\n"
+                            },
+                            {
+                              "text": "🔍 檢查受保護連結: sidebar-my-lora\n"
+                            },
+                            {
+                              "text": "📊 元素 sidebar-my-lora 存在數量: \u001b[33m0\u001b[39m\n"
+                            },
+                            {
+                              "text": "ℹ️ 元素 sidebar-my-lora 不存在，符合預期\n"
+                            },
+                            {
+                              "text": "🔍 檢查受保護連結: sidebar-lora-creation\n"
+                            },
+                            {
+                              "text": "📊 元素 sidebar-lora-creation 存在數量: \u001b[33m0\u001b[39m\n"
+                            },
+                            {
+                              "text": "ℹ️ 元素 sidebar-lora-creation 不存在，符合預期\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:02:44.824Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-3c8de987248c11a7f5b1",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 95,
+                  "column": 9
+                },
+                {
+                  "title": "sidebar 在移動設備上應該包含完整的導航選項",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 18840,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 導航到首頁\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 已成功導航到首頁\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 移動設備 sidebar 導航測試\n"
+                            },
+                            {
+                              "text": "📱 設置移動設備視窗大小 (375x667)\n"
+                            },
+                            {
+                              "text": "🔄 重新載入頁面\n"
+                            },
+                            {
+                              "text": "⏳ 等待客戶端完成 (2秒)\n"
+                            },
+                            {
+                              "text": "📍 搜尋 sidebar 觸發器\n"
+                            },
+                            {
+                              "text": "⏳ 等待 sidebar 觸發器可見\n"
+                            },
+                            {
+                              "text": "✅ Sidebar 觸發器已顯示\n"
+                            },
+                            {
+                              "text": "🖱️ 點擊觸發器按鈕打開 sidebar\n"
+                            },
+                            {
+                              "text": "⏳ 等待 sidebar 動畫完成 (1秒)\n"
+                            },
+                            {
+                              "text": "📍 檢查 sidebar 內容是否可見\n"
+                            },
+                            {
+                              "text": "✅ Sidebar 內容已顯示\n"
+                            },
+                            {
+                              "text": "📋 檢查 5 個主要導航連結\n"
+                            },
+                            {
+                              "text": "🔍 檢查導航連結: sidebar-home\n"
+                            },
+                            {
+                              "text": "✅ sidebar-home 已顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查導航連結: sidebar-canvas\n"
+                            },
+                            {
+                              "text": "✅ sidebar-canvas 已顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查導航連結: sidebar-ai-tools\n"
+                            },
+                            {
+                              "text": "✅ sidebar-ai-tools 已顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查導航連結: sidebar-animation\n"
+                            },
+                            {
+                              "text": "✅ sidebar-animation 已顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查導航連結: sidebar-generate\n"
+                            },
+                            {
+                              "text": "✅ sidebar-generate 已顯示\n"
+                            },
+                            {
+                              "text": "✅ 移動設備 sidebar 測試通過\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:02:53.470Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-44a056b04fb996154dd8",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 123,
+                  "column": 9
+                },
+                {
+                  "title": "移動設備 sidebar 點擊任意連結跳轉後應關閉 sideBar",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 22013,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 導航到首頁\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 已成功導航到首頁\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 移動設備 sidebar 自動關閉測試\n"
+                            },
+                            {
+                              "text": "📱 設置移動設備視窗大小 (375x667)\n"
+                            },
+                            {
+                              "text": "🔄 重新載入頁面\n"
+                            },
+                            {
+                              "text": "⏳ 等待客戶端完成 (2秒)\n"
+                            },
+                            {
+                              "text": "📍 搜尋 sidebar 觸發器和內容\n"
+                            },
+                            {
+                              "text": "🔍 檢查初始狀態\n"
+                            },
+                            {
+                              "text": "✅ 初始狀態：觸發器可見\n"
+                            },
+                            {
+                              "text": "🖱️ 第一次點擊：打開 sidebar\n"
+                            },
+                            {
+                              "text": "✅ Sidebar 已打開\n"
+                            },
+                            {
+                              "text": "🖱️ 點擊 generate 導航連結\n"
+                            },
+                            {
+                              "text": "⏳ 等待頁面導航完成\n"
+                            },
+                            {
+                              "text": "✅ 導航成功 http://localhost:3000/ja-JP/generate\n"
+                            },
+                            {
+                              "text": "⏳ 等待 sidebar 關閉動畫完成 (1秒)\n"
+                            },
+                            {
+                              "text": "🔍 檢查 sidebar 是否已關閉\n"
+                            },
+                            {
+                              "text": "📊 Sidebar 可見性: \u001b[33mfalse\u001b[39m\n"
+                            },
+                            {
+                              "text": "✅ 測試通過: Sidebar 已正確關閉\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:03:12.325Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-855c4c0b74c3b55dbb0c",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 181,
+                  "column": 9
+                },
+                {
+                  "title": "所有主要導航連結都應該可點擊",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 8943,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 導航到首頁\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 已成功導航到首頁\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 主要導航連結可點擊性測試\n"
+                            },
+                            {
+                              "text": "📋 測試 5 個導航連結\n"
+                            },
+                            {
+                              "text": "🔍 測試連結: sidebar-home\n"
+                            },
+                            {
+                              "text": "👁️ 檢查 sidebar-home 可見性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-home 可見\n"
+                            },
+                            {
+                              "text": "🖱️ 檢查 sidebar-home 可點擊性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-home 可點擊\n"
+                            },
+                            {
+                              "text": "🔗 檢查 sidebar-home href 屬性\n"
+                            },
+                            {
+                              "text": "📍 sidebar-home href: /\n"
+                            },
+                            {
+                              "text": "✅ sidebar-home href 屬性正確\n"
+                            },
+                            {
+                              "text": "🔍 測試連結: sidebar-canvas\n"
+                            },
+                            {
+                              "text": "👁️ 檢查 sidebar-canvas 可見性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-canvas 可見\n"
+                            },
+                            {
+                              "text": "🖱️ 檢查 sidebar-canvas 可點擊性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-canvas 可點擊\n"
+                            },
+                            {
+                              "text": "🔗 檢查 sidebar-canvas href 屬性\n"
+                            },
+                            {
+                              "text": "📍 sidebar-canvas href: /canvas\n"
+                            },
+                            {
+                              "text": "✅ sidebar-canvas href 屬性正確\n"
+                            },
+                            {
+                              "text": "🔍 測試連結: sidebar-ai-tools\n"
+                            },
+                            {
+                              "text": "👁️ 檢查 sidebar-ai-tools 可見性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-ai-tools 可見\n"
+                            },
+                            {
+                              "text": "🖱️ 檢查 sidebar-ai-tools 可點擊性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-ai-tools 可點擊\n"
+                            },
+                            {
+                              "text": "🔗 檢查 sidebar-ai-tools href 屬性\n"
+                            },
+                            {
+                              "text": "📍 sidebar-ai-tools href: /ai-tools\n"
+                            },
+                            {
+                              "text": "✅ sidebar-ai-tools href 屬性正確\n"
+                            },
+                            {
+                              "text": "🔍 測試連結: sidebar-animation\n"
+                            },
+                            {
+                              "text": "👁️ 檢查 sidebar-animation 可見性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-animation 可見\n"
+                            },
+                            {
+                              "text": "🖱️ 檢查 sidebar-animation 可點擊性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-animation 可點擊\n"
+                            },
+                            {
+                              "text": "🔗 檢查 sidebar-animation href 屬性\n"
+                            },
+                            {
+                              "text": "📍 sidebar-animation href: /videos\n"
+                            },
+                            {
+                              "text": "✅ sidebar-animation href 屬性正確\n"
+                            },
+                            {
+                              "text": "🔍 測試連結: sidebar-generate\n"
+                            },
+                            {
+                              "text": "👁️ 檢查 sidebar-generate 可見性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-generate 可見\n"
+                            },
+                            {
+                              "text": "🖱️ 檢查 sidebar-generate 可點擊性\n"
+                            },
+                            {
+                              "text": "✅ sidebar-generate 可點擊\n"
+                            },
+                            {
+                              "text": "🔗 檢查 sidebar-generate href 屬性\n"
+                            },
+                            {
+                              "text": "📍 sidebar-generate href: /generate\n"
+                            },
+                            {
+                              "text": "✅ sidebar-generate href 屬性正確\n"
+                            },
+                            {
+                              "text": "✅ 所有導航連結測試通過\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:03:34.352Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-d45a87587fb75b9ccbd4",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 245,
+                  "column": 9
+                },
+                {
+                  "title": "應該預留廣告空間",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 8430,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 導航到首頁\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 已成功導航到首頁\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 廣告空間檢查\n"
+                            },
+                            {
+                              "text": "✅ 廣告空間已顯示\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:03:43.310Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-e61de3eaf650061d7100",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 282,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "已認證用戶測試",
+              "file": "side-bar/full-sidebar.spec.ts",
+              "line": 289,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "應該包含完整的導航選項",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 19404,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🚀 開始執行 beforeEach: 登入用戶\n"
+                            },
+                            {
+                              "text": "✅ 登入成功\n"
+                            },
+                            {
+                              "text": "✅ beforeEach 完成: 用戶已成功登入\n"
+                            },
+                            {
+                              "text": "🔍 測試開始: 登入後 sidebar 導航選項檢查\n"
+                            },
+                            {
+                              "text": "📋 檢查 5 個主要導航連結\n"
+                            },
+                            {
+                              "text": "🔍 檢查主要導航連結: sidebar-home\n"
+                            },
+                            {
+                              "text": "✅ sidebar-home 已顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查主要導航連結: sidebar-canvas\n"
+                            },
+                            {
+                              "text": "✅ sidebar-canvas 已顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查主要導航連結: sidebar-ai-tools\n"
+                            },
+                            {
+                              "text": "✅ sidebar-ai-tools 已顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查主要導航連結: sidebar-animation\n"
+                            },
+                            {
+                              "text": "✅ sidebar-animation 已顯示\n"
+                            },
+                            {
+                              "text": "🔍 檢查主要導航連結: sidebar-generate\n"
+                            },
+                            {
+                              "text": "✅ sidebar-generate 已顯示\n"
+                            },
+                            {
+                              "text": "📋 檢查 2 個受保護連結\n"
+                            },
+                            {
+                              "text": "🔍 檢查受保護連結: sidebar-my-lora\n"
+                            },
+                            {
+                              "text": "📊 受保護連結 sidebar-my-lora 存在數量: \u001b[33m0\u001b[39m\n"
+                            },
+                            {
+                              "text": "ℹ️ Protected link sidebar-my-lora not found\n"
+                            },
+                            {
+                              "text": "🔍 檢查受保護連結: sidebar-lora-creation\n"
+                            },
+                            {
+                              "text": "📊 受保護連結 sidebar-lora-creation 存在數量: \u001b[33m0\u001b[39m\n"
+                            },
+                            {
+                              "text": "ℹ️ Protected link sidebar-lora-creation not found\n"
+                            },
+                            {
+                              "text": "✅ 登入後 sidebar 導航選項檢查完成\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:03:51.754Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "e45446b27cec38e324d8-c6ca0575aa845035e107",
+                  "file": "side-bar/full-sidebar.spec.ts",
+                  "line": 308,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "side-bar/minimal-sidebar.spec.ts",
+      "file": "side-bar/minimal-sidebar.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Minimal Sidebar Feature Flag",
+          "file": "side-bar/minimal-sidebar.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Minimal Sidebar Mode",
+              "file": "side-bar/minimal-sidebar.spec.ts",
+              "line": 6,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should display essential navigation in minimal mode",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "/home/runner/work/gazai/gazai/tests/e2e/side-bar/minimal-sidebar.spec.ts",
+                            "line": 14,
+                            "column": 14
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "skipped",
+                          "duration": 195,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 檢查 isMinimalMode: \u001b[33mfalse\u001b[39m\n"
+                            },
+                            {
+                              "text": "⚠️ 當前為 full sidebar mode，跳過 minimal sidebar 測試\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:04:11.176Z",
+                          "annotations": [
+                            {
+                              "type": "skip",
+                              "location": {
+                                "file": "/home/runner/work/gazai/gazai/tests/e2e/side-bar/minimal-sidebar.spec.ts",
+                                "line": 14,
+                                "column": 14
+                              }
+                            }
+                          ],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "b2d4c601e68c860610e6-8250f1a44d0dd7dcf26c",
+                  "file": "side-bar/minimal-sidebar.spec.ts",
+                  "line": 20,
+                  "column": 9
+                },
+                {
+                  "title": "should NOT display advanced features in minimal mode",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "/home/runner/work/gazai/gazai/tests/e2e/side-bar/minimal-sidebar.spec.ts",
+                            "line": 14,
+                            "column": 14
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "skipped",
+                          "duration": 199,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 檢查 isMinimalMode: \u001b[33mfalse\u001b[39m\n"
+                            },
+                            {
+                              "text": "⚠️ 當前為 full sidebar mode，跳過 minimal sidebar 測試\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:04:11.385Z",
+                          "annotations": [
+                            {
+                              "type": "skip",
+                              "location": {
+                                "file": "/home/runner/work/gazai/gazai/tests/e2e/side-bar/minimal-sidebar.spec.ts",
+                                "line": 14,
+                                "column": 14
+                              }
+                            }
+                          ],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "b2d4c601e68c860610e6-369b9d9e62e74cb3e06d",
+                  "file": "side-bar/minimal-sidebar.spec.ts",
+                  "line": 39,
+                  "column": 9
+                },
+                {
+                  "title": "should NOT display AdSense banner in minimal mode",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "/home/runner/work/gazai/gazai/tests/e2e/side-bar/minimal-sidebar.spec.ts",
+                            "line": 14,
+                            "column": 14
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "skipped",
+                          "duration": 191,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 檢查 isMinimalMode: \u001b[33mfalse\u001b[39m\n"
+                            },
+                            {
+                              "text": "⚠️ 當前為 full sidebar mode，跳過 minimal sidebar 測試\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-03-11T08:04:11.600Z",
+                          "annotations": [
+                            {
+                              "type": "skip",
+                              "location": {
+                                "file": "/home/runner/work/gazai/gazai/tests/e2e/side-bar/minimal-sidebar.spec.ts",
+                                "line": 14,
+                                "column": 14
+                              }
+                            }
+                          ],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "b2d4c601e68c860610e6-655d05ccf7676595b633",
+                  "file": "side-bar/minimal-sidebar.spec.ts",
+                  "line": 53,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-03-11T07:59:58.958Z",
+    "duration": 616252.863,
+    "expected": 28,
+    "skipped": 3,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
