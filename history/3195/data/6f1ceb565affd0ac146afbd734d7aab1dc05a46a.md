@@ -1,0 +1,659 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "GAZAI" [ref=e6] [cursor=pointer]:
+        - /url: /ja-JP
+        - img "GAZAI" [ref=e7]
+        - generic [ref=e9]:
+          - img
+      - generic [ref=e11]:
+        - button "招待コード" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+          - text: 招待コード
+        - link "110" [ref=e15] [cursor=pointer]:
+          - /url: /pricing
+          - img [ref=e16]
+          - generic [ref=e20]: "110"
+        - button "D" [ref=e21] [cursor=pointer]:
+          - generic [ref=e24]: D
+  - generic [ref=e26]:
+    - link [ref=e27] [cursor=pointer]:
+      - /url: /canvas
+      - img [ref=e28]
+    - link [ref=e30] [cursor=pointer]:
+      - /url: /generate
+      - img [ref=e31]
+    - link [ref=e35] [cursor=pointer]:
+      - /url: /videos
+      - img [ref=e36]
+    - link [ref=e39] [cursor=pointer]:
+      - /url: /ai-tools
+      - img [ref=e40]
+    - button "言語" [ref=e43] [cursor=pointer]:
+      - img [ref=e44]
+    - button [ref=e47] [cursor=pointer]:
+      - img [ref=e48]
+  - main [ref=e52]:
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - generic:
+          - region "Release note" [ref=e60] [cursor=pointer]:
+            - generic [ref=e61]:
+              - img [ref=e62]
+              - generic [ref=e66]:
+                - generic [ref=e67]: キャンバス体験アップグレード v0.9.0
+                - img [ref=e68]
+            - button "Close announcement" [ref=e72]:
+              - img [ref=e73]
+          - generic:
+            - img "Gazai Mascot"
+        - generic [ref=e76]:
+          - button "画像を選択" [ref=e77] [cursor=pointer]
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - textbox "Gazai ちゃん~ キャンペーンやイ" [ref=e80]
+              - generic: Gazai ちゃん~ キャンペーンやイ
+            - generic [ref=e81]:
+              - button "画像を選択" [ref=e82] [cursor=pointer]:
+                - img [ref=e83]
+              - button [disabled]:
+                - img
+        - generic [ref=e85]:
+          - tablist [ref=e89]:
+            - tab "スライド" [selected] [ref=e90] [cursor=pointer]:
+              - generic [ref=e91]: スライド
+            - tab "イラスト" [ref=e92] [cursor=pointer]:
+              - generic [ref=e93]: イラスト
+            - tab "ブランド" [ref=e94] [cursor=pointer]:
+              - generic [ref=e95]: ブランド
+            - tab "ポスター" [ref=e96] [cursor=pointer]:
+              - generic [ref=e97]: ポスター
+            - tab "漫画" [ref=e98] [cursor=pointer]:
+              - generic [ref=e99]: 漫画
+            - tab "お遊び" [ref=e100] [cursor=pointer]:
+              - generic [ref=e101]: お遊び
+          - generic [ref=e102]:
+            - button "小学生向けの水の循環の図解を作って" [ref=e103] [cursor=pointer]
+            - button "地域イベント向けにリサイクル分別を3枚で説明して" [ref=e104] [cursor=pointer]
+            - button "顧客提案用の機能比較を1枚にまとめて" [ref=e105] [cursor=pointer]
+      - generic [ref=e106]:
+        - generic [ref=e107]:
+          - heading "マイキャンバス" [level=2] [ref=e108]
+          - link "もっと見る" [ref=e109] [cursor=pointer]:
+            - /url: /canvas
+            - text: もっと見る
+            - img [ref=e110]
+        - region [ref=e114]:
+          - generic [ref=e117]:
+            - group [ref=e118]:
+              - button "新しいキャンバスを作成" [ref=e121] [cursor=pointer]:
+                - generic [ref=e122]:
+                  - img [ref=e123]
+                  - generic [ref=e124]: 新しいキャンバス
+            - group [ref=e125]:
+              - generic [ref=e128]:
+                - button "その他のオプション" [ref=e129] [cursor=pointer]:
+                  - img [ref=e130]
+                - link "Untitled Canvas Untitled Canvas 11 分前に更新" [ref=e134] [cursor=pointer]:
+                  - /url: /ja-JP/canvas/cmn78kd2e0007j0ww102cvdy9
+                  - img "Untitled Canvas" [ref=e137]
+                  - generic [ref=e138]:
+                    - generic "Untitled Canvas" [ref=e139]
+                    - paragraph [ref=e140]: 11 分前に更新
+            - group [ref=e141]:
+              - generic [ref=e144]:
+                - button "その他のオプション" [ref=e145] [cursor=pointer]:
+                  - img [ref=e146]
+                - link "Untitled Canvas Untitled Canvas 12 分前に更新" [ref=e150] [cursor=pointer]:
+                  - /url: /ja-JP/canvas/cmn78jrzj0003j2q5i5eoufpv
+                  - img "Untitled Canvas" [ref=e153]
+                  - generic [ref=e154]:
+                    - generic "Untitled Canvas" [ref=e155]
+                    - paragraph [ref=e156]: 12 分前に更新
+            - group [ref=e157]:
+              - generic [ref=e160]:
+                - button "その他のオプション" [ref=e161] [cursor=pointer]:
+                  - img [ref=e162]
+                - link "Untitled Canvas Untitled Canvas 12 分前に更新" [ref=e166] [cursor=pointer]:
+                  - /url: /ja-JP/canvas/cmn78ij9b0005j0wwqz8bo0cm
+                  - img "Untitled Canvas" [ref=e169]
+                  - generic [ref=e170]:
+                    - generic "Untitled Canvas" [ref=e171]
+                    - paragraph [ref=e172]: 12 分前に更新
+            - group [ref=e173]:
+              - generic [ref=e176]:
+                - button "その他のオプション" [ref=e177] [cursor=pointer]:
+                  - img [ref=e178]
+                - link "Untitled Canvas Untitled Canvas 13 分前に更新" [ref=e182] [cursor=pointer]:
+                  - /url: /ja-JP/canvas/cmn78h9740003j0wwlz2sgvn0
+                  - img "Untitled Canvas" [ref=e185]
+                  - generic [ref=e186]:
+                    - generic "Untitled Canvas" [ref=e187]
+                    - paragraph [ref=e188]: 13 分前に更新
+            - group [ref=e189]:
+              - generic [ref=e192]:
+                - button "その他のオプション" [ref=e193] [cursor=pointer]:
+                  - img [ref=e194]
+                - link "Untitled Canvas Untitled Canvas 3 時間前に更新" [ref=e198] [cursor=pointer]:
+                  - /url: /ja-JP/canvas/cmn72obui0003v8dd88lbi5vy
+                  - img "Untitled Canvas" [ref=e201]
+                  - generic [ref=e202]:
+                    - generic "Untitled Canvas" [ref=e203]
+                    - paragraph [ref=e204]: 3 時間前に更新
+            - group [ref=e205]:
+              - generic [ref=e208]:
+                - button "その他のオプション" [ref=e209] [cursor=pointer]:
+                  - img [ref=e210]
+                - link "Untitled Canvas Untitled Canvas 3 時間前に更新" [ref=e214] [cursor=pointer]:
+                  - /url: /ja-JP/canvas/cmn72n4jn0001v8ddhpywh6h6
+                  - img "Untitled Canvas" [ref=e217]
+                  - generic [ref=e218]:
+                    - generic "Untitled Canvas" [ref=e219]
+                    - paragraph [ref=e220]: 3 時間前に更新
+            - group [ref=e221]
+          - button "Previous slide" [disabled]:
+            - img
+            - generic: Previous slide
+          - button "Next slide" [ref=e230] [cursor=pointer]:
+            - img [ref=e231]
+            - generic [ref=e233]: Next slide
+      - generic [ref=e234]:
+        - generic [ref=e235]:
+          - generic [ref=e236]:
+            - heading "AIツール" [level=2] [ref=e237]
+            - paragraph [ref=e238]: AIを活用したクリエイティブツールのラインナップをご紹介します
+          - link "もっと見る" [ref=e239] [cursor=pointer]:
+            - /url: /ai-tools
+            - text: もっと見る
+            - img [ref=e240]
+        - region [ref=e244]:
+          - generic [ref=e247]:
+            - group [ref=e248]:
+              - generic [ref=e251] [cursor=pointer]:
+                - img "Nano Banana 2" [ref=e254]
+                - generic [ref=e255]:
+                  - heading "Nano Banana 2" [level=3] [ref=e256]
+                  - generic [ref=e257]:
+                    - generic [ref=e259]:
+                      - img [ref=e260]
+                      - generic [ref=e264]: 画像
+                    - generic [ref=e265]:
+                      - img [ref=e266]
+                      - generic [ref=e270]: "10"
+                    - button "0" [ref=e271]:
+                      - img [ref=e272]
+                      - paragraph [ref=e274]: "0"
+            - group [ref=e275]:
+              - generic [ref=e278] [cursor=pointer]:
+                - img "GEMINI_3_FLASH_PREVIEW" [ref=e281]
+                - generic [ref=e282]:
+                  - heading "GEMINI_3_FLASH_PREVIEW" [level=3] [ref=e283]
+                  - paragraph [ref=e284]: 純文字模型
+                  - generic [ref=e285]:
+                    - generic [ref=e287]:
+                      - img [ref=e288]
+                      - generic [ref=e290]: テキスト
+                    - generic [ref=e291]:
+                      - img [ref=e292]
+                      - generic [ref=e296]: "1"
+                    - button "0" [ref=e297]:
+                      - img [ref=e298]
+                      - paragraph [ref=e300]: "0"
+            - group [ref=e301]:
+              - generic [ref=e304] [cursor=pointer]:
+                - img "loop video dev" [ref=e307]
+                - generic [ref=e308]:
+                  - heading "loop video dev" [level=3] [ref=e309]
+                  - paragraph [ref=e310]: loop video dev
+                  - generic [ref=e311]:
+                    - generic [ref=e313]:
+                      - img [ref=e314]
+                      - generic [ref=e317]: 動画
+                    - generic [ref=e318]:
+                      - img [ref=e319]
+                      - generic [ref=e323]: "100"
+                    - button "0" [ref=e324]:
+                      - img [ref=e325]
+                      - paragraph [ref=e327]: "0"
+            - group [ref=e328]:
+              - generic [ref=e331] [cursor=pointer]:
+                - img "視点変更" [ref=e334]
+                - generic [ref=e335]:
+                  - heading "視点変更" [level=3] [ref=e336]
+                  - paragraph [ref=e337]: キャラクターをアップロードしてください。複数視点の画像を生成します。
+                  - generic [ref=e338]:
+                    - generic [ref=e340]:
+                      - img [ref=e341]
+                      - generic [ref=e345]: 画像
+                    - generic [ref=e346]:
+                      - img [ref=e347]
+                      - generic [ref=e351]: "10"
+                    - button "0" [ref=e352]:
+                      - img [ref=e353]
+                      - paragraph [ref=e355]: "0"
+            - group [ref=e356]:
+              - generic [ref=e359] [cursor=pointer]:
+                - img "紙雕藝術" [ref=e362]
+                - generic [ref=e363]:
+                  - heading "紙雕藝術" [level=3] [ref=e364]
+                  - paragraph [ref=e365]: 搭建一個由紙所構成的場景
+                  - generic [ref=e366]:
+                    - generic [ref=e368]:
+                      - img [ref=e369]
+                      - generic [ref=e373]: 画像
+                    - generic [ref=e374]:
+                      - img [ref=e375]
+                      - generic [ref=e379]: "10"
+                    - button "1" [ref=e380]:
+                      - img [ref=e381]
+                      - paragraph [ref=e383]: "1"
+            - group [ref=e384]:
+              - generic [ref=e387] [cursor=pointer]:
+                - img "鉛筆速寫" [ref=e390]
+                - generic [ref=e391]:
+                  - heading "鉛筆速寫" [level=3] [ref=e392]
+                  - paragraph [ref=e393]: 將參考圖片轉換為鉛筆素描風格
+                  - generic [ref=e394]:
+                    - generic [ref=e396]:
+                      - img [ref=e397]
+                      - generic [ref=e401]: 画像
+                    - generic [ref=e402]:
+                      - img [ref=e403]
+                      - generic [ref=e407]: "10"
+                    - button "1" [ref=e408]:
+                      - img [ref=e409]
+                      - paragraph [ref=e411]: "1"
+            - group [ref=e412]
+          - button "Previous slide" [disabled]:
+            - img
+            - generic: Previous slide
+          - button "Next slide" [ref=e416] [cursor=pointer]:
+            - img [ref=e417]
+            - generic [ref=e419]: Next slide
+      - generic [ref=e420]:
+        - heading "インスピレーションを探す" [level=2] [ref=e422]
+        - generic [ref=e423]:
+          - generic [ref=e424]:
+            - generic:
+              - img
+            - searchbox "作品タイトルまたは作者名で検索…" [ref=e425]
+          - generic [ref=e429]:
+            - button "すべて" [ref=e430] [cursor=pointer]
+            - button "チュートリアル" [ref=e431] [cursor=pointer]
+            - button "イラスト" [ref=e432] [cursor=pointer]
+            - button "キャラクターデザイン" [ref=e433] [cursor=pointer]
+            - button "商品撮影" [ref=e434] [cursor=pointer]
+            - button "ポスターデザイン" [ref=e435] [cursor=pointer]
+            - button "動画" [ref=e436] [cursor=pointer]
+            - button "ステッカー" [ref=e437] [cursor=pointer]
+          - generic [ref=e438]:
+            - generic [ref=e439]:
+              - generic [ref=e440]:
+                - link "繽紛糖果屋：傾瀉而出的甜蜜軟糖 繽紛糖果屋：傾瀉而出的甜蜜軟糖" [ref=e441] [cursor=pointer]:
+                  - /url: /artworks/cmn70rh7f00001278zkp1j6fw
+                  - img "繽紛糖果屋：傾瀉而出的甜蜜軟糖" [ref=e445]
+                  - heading "繽紛糖果屋：傾瀉而出的甜蜜軟糖" [level=3] [ref=e447]
+                - generic [ref=e448]:
+                  - link "Upset Blush Upset Blush" [ref=e449] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e450]:
+                      - img "Upset Blush" [ref=e452]
+                      - generic [ref=e454]: Upset Blush
+                  - generic [ref=e455]:
+                    - generic [ref=e456] [cursor=pointer]:
+                      - img [ref=e457]
+                      - text: "0"
+                    - generic [ref=e459] [cursor=pointer]:
+                      - img [ref=e460]
+                      - text: "0"
+              - generic [ref=e462]:
+                - link "翻書 翻書" [ref=e463] [cursor=pointer]:
+                  - /url: /artworks/cmk6ammxt0003w8lpyfd4kk6v
+                  - img "翻書" [ref=e467]
+                  - heading "翻書" [level=3] [ref=e469]
+                - generic [ref=e470]:
+                  - link "Upset Blush Upset Blush" [ref=e471] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e472]:
+                      - img "Upset Blush" [ref=e474]
+                      - generic [ref=e476]: Upset Blush
+                  - generic [ref=e477]:
+                    - generic [ref=e478] [cursor=pointer]:
+                      - img [ref=e479]
+                      - text: "0"
+                    - generic [ref=e481] [cursor=pointer]:
+                      - img [ref=e482]
+                      - text: "0"
+              - generic [ref=e484]:
+                - 'link "Panda''s Transformation: Sketch to Color Panda''s Transformation: Sketch to Color" [ref=e485] [cursor=pointer]':
+                  - /url: /artworks/cmjmpmtvv00008n2vxhxj1vca
+                  - 'img "Panda''s Transformation: Sketch to Color" [ref=e489]'
+                  - 'heading "Panda''s Transformation: Sketch to Color" [level=3] [ref=e491]'
+                - generic [ref=e492]:
+                  - link "Horizontal Beige Horizontal Beige" [ref=e493] [cursor=pointer]:
+                    - /url: /profile/cmj16sox9000012wfk5lsk7rs
+                    - generic [ref=e494]:
+                      - img "Horizontal Beige" [ref=e496]
+                      - generic [ref=e498]: Horizontal Beige
+                  - generic [ref=e499]:
+                    - generic [ref=e500] [cursor=pointer]:
+                      - img [ref=e501]
+                      - text: "0"
+                    - generic [ref=e503] [cursor=pointer]:
+                      - img [ref=e504]
+                      - text: "0"
+              - generic [ref=e506]:
+                - link "四季風光四格畫 四季風光四格畫" [ref=e507] [cursor=pointer]:
+                  - /url: /artworks/cmjgvo2b50003fowfanp5nkk9
+                  - img "四季風光四格畫" [ref=e511]
+                  - heading "四季風光四格畫" [level=3] [ref=e513]
+                - generic [ref=e514]:
+                  - link "Upset Blush Upset Blush" [ref=e515] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e516]:
+                      - img "Upset Blush" [ref=e518]
+                      - generic [ref=e520]: Upset Blush
+                  - generic [ref=e521]:
+                    - generic [ref=e522] [cursor=pointer]:
+                      - img [ref=e523]
+                      - text: "0"
+                    - generic [ref=e525] [cursor=pointer]:
+                      - img [ref=e526]
+                      - text: "0"
+            - generic [ref=e528]:
+              - generic [ref=e529]:
+                - link "繽紛小熊軟糖的甜蜜時刻 繽紛小熊軟糖的甜蜜時刻" [ref=e530] [cursor=pointer]:
+                  - /url: /artworks/cmlhg0d8l0000eek9eq2cjsif
+                  - img "繽紛小熊軟糖的甜蜜時刻" [ref=e534]
+                  - heading "繽紛小熊軟糖的甜蜜時刻" [level=3] [ref=e536]
+                - generic [ref=e537]:
+                  - link "Upset Blush Upset Blush" [ref=e538] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e539]:
+                      - img "Upset Blush" [ref=e541]
+                      - generic [ref=e543]: Upset Blush
+                  - generic [ref=e544]:
+                    - generic [ref=e545] [cursor=pointer]:
+                      - img [ref=e546]
+                      - text: "0"
+                    - generic [ref=e548] [cursor=pointer]:
+                      - img [ref=e549]
+                      - text: "0"
+              - generic [ref=e551]:
+                - link "城市夜色中的長髮少女 城市夜色中的長髮少女" [ref=e552] [cursor=pointer]:
+                  - /url: /artworks/cmk54s2sf0000122gb4jax75j
+                  - img "城市夜色中的長髮少女" [ref=e556]
+                  - heading "城市夜色中的長髮少女" [level=3] [ref=e558]
+                - generic [ref=e559]:
+                  - link "Upset Blush Upset Blush" [ref=e560] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e561]:
+                      - img "Upset Blush" [ref=e563]
+                      - generic [ref=e565]: Upset Blush
+                  - generic [ref=e566]:
+                    - generic [ref=e567] [cursor=pointer]:
+                      - img [ref=e568]
+                      - text: "0"
+                    - generic [ref=e570] [cursor=pointer]:
+                      - img [ref=e571]
+                      - text: "0"
+              - generic [ref=e573]:
+                - 'link "Panda''s Transformation: Sketch to Color Panda''s Transformation: Sketch to Color" [ref=e574] [cursor=pointer]':
+                  - /url: /artworks/cmjmocegk0000jlryhs6byvgv
+                  - 'img "Panda''s Transformation: Sketch to Color" [ref=e578]'
+                  - 'heading "Panda''s Transformation: Sketch to Color" [level=3] [ref=e580]'
+                - generic [ref=e581]:
+                  - link "Horizontal Beige Horizontal Beige" [ref=e582] [cursor=pointer]:
+                    - /url: /profile/cmj16sox9000012wfk5lsk7rs
+                    - generic [ref=e583]:
+                      - img "Horizontal Beige" [ref=e585]
+                      - generic [ref=e587]: Horizontal Beige
+                  - generic [ref=e588]:
+                    - generic [ref=e589] [cursor=pointer]:
+                      - img [ref=e590]
+                      - text: "0"
+                    - generic [ref=e592] [cursor=pointer]:
+                      - img [ref=e593]
+                      - text: "0"
+              - generic [ref=e595]:
+                - link "四季教學圖卡：探索春、夏、秋、冬的奧秘 四季教學圖卡：探索春、夏、秋、冬的奧秘" [ref=e596] [cursor=pointer]:
+                  - /url: /artworks/cmjgvkdcg0005xu39brj71ufp
+                  - img "四季教學圖卡：探索春、夏、秋、冬的奧秘" [ref=e600]
+                  - heading "四季教學圖卡：探索春、夏、秋、冬的奧秘" [level=3] [ref=e602]
+                - generic [ref=e603]:
+                  - link "Upset Blush Upset Blush" [ref=e604] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e605]:
+                      - img "Upset Blush" [ref=e607]
+                      - generic [ref=e609]: Upset Blush
+                  - generic [ref=e610]:
+                    - generic [ref=e611] [cursor=pointer]:
+                      - img [ref=e612]
+                      - text: "0"
+                    - generic [ref=e614] [cursor=pointer]:
+                      - img [ref=e615]
+                      - text: "0"
+            - generic [ref=e617]:
+              - generic [ref=e618]:
+                - link "書店裡的冬日閱讀時光 書店裡的冬日閱讀時光" [ref=e619] [cursor=pointer]:
+                  - /url: /artworks/cmkc1k4m700087v1zp9puykae
+                  - img "書店裡的冬日閱讀時光" [ref=e623]
+                  - heading "書店裡的冬日閱讀時光" [level=3] [ref=e625]
+                - generic [ref=e626]:
+                  - link "Upset Blush Upset Blush" [ref=e627] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e628]:
+                      - img "Upset Blush" [ref=e630]
+                      - generic [ref=e632]: Upset Blush
+                  - generic [ref=e633]:
+                    - generic [ref=e634] [cursor=pointer]:
+                      - img [ref=e635]
+                      - text: "0"
+                    - generic [ref=e637] [cursor=pointer]:
+                      - img [ref=e638]
+                      - text: "0"
+              - generic [ref=e640]:
+                - link "圖書館的寧靜時光 圖書館的寧靜時光" [ref=e641] [cursor=pointer]:
+                  - /url: /artworks/cmk50irvn0006mbs554nd6gfp
+                  - img "圖書館的寧靜時光" [ref=e645]
+                  - heading "圖書館的寧靜時光" [level=3] [ref=e647]
+                - generic [ref=e648]:
+                  - link "Upset Blush Upset Blush" [ref=e649] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e650]:
+                      - img "Upset Blush" [ref=e652]
+                      - generic [ref=e654]: Upset Blush
+                  - generic [ref=e655]:
+                    - generic [ref=e656] [cursor=pointer]:
+                      - img [ref=e657]
+                      - text: "0"
+                    - generic [ref=e659] [cursor=pointer]:
+                      - img [ref=e660]
+                      - text: "0"
+              - generic [ref=e662]:
+                - link "Neon Future Cityscape with AI Neon Future Cityscape with AI" [ref=e663] [cursor=pointer]:
+                  - /url: /artworks/cmji4xwlx0003fxna08u948pu
+                  - img "Neon Future Cityscape with AI" [ref=e667]
+                  - heading "Neon Future Cityscape with AI" [level=3] [ref=e669]
+                - generic [ref=e670]:
+                  - link "Honest Aquamarine Honest Aquamarine" [ref=e671] [cursor=pointer]:
+                    - /url: /profile/cmji4qjwe00003am9wwt7cnmv
+                    - generic [ref=e672]:
+                      - img "Honest Aquamarine" [ref=e674]
+                      - generic [ref=e676]: Honest Aquamarine
+                  - generic [ref=e677]:
+                    - generic [ref=e678] [cursor=pointer]:
+                      - img [ref=e679]
+                      - text: "0"
+                    - generic [ref=e681] [cursor=pointer]:
+                      - img [ref=e682]
+                      - text: "0"
+              - generic [ref=e684]:
+                - link "魔幻水晶球公主 魔幻水晶球公主" [ref=e685] [cursor=pointer]:
+                  - /url: /artworks/cmjgvi8uw0006zih4kioxt71t
+                  - img "魔幻水晶球公主" [ref=e689]
+                  - heading "魔幻水晶球公主" [level=3] [ref=e691]
+                - generic [ref=e692]:
+                  - link "Upset Blush Upset Blush" [ref=e693] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e694]:
+                      - img "Upset Blush" [ref=e696]
+                      - generic [ref=e698]: Upset Blush
+                  - generic [ref=e699]:
+                    - generic [ref=e700] [cursor=pointer]:
+                      - img [ref=e701]
+                      - text: "0"
+                    - generic [ref=e703] [cursor=pointer]:
+                      - img [ref=e704]
+                      - text: "0"
+            - generic [ref=e706]:
+              - generic [ref=e707]:
+                - link "城市中的午後小憩 城市中的午後小憩" [ref=e708] [cursor=pointer]:
+                  - /url: /artworks/cmkc19me600007v1z1obtxw3z
+                  - img "城市中的午後小憩" [ref=e712]
+                  - heading "城市中的午後小憩" [level=3] [ref=e714]
+                - generic [ref=e715]:
+                  - link "Upset Blush Upset Blush" [ref=e716] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e717]:
+                      - img "Upset Blush" [ref=e719]
+                      - generic [ref=e721]: Upset Blush
+                  - generic [ref=e722]:
+                    - generic [ref=e723] [cursor=pointer]:
+                      - img [ref=e724]
+                      - text: "0"
+                    - generic [ref=e726] [cursor=pointer]:
+                      - img [ref=e727]
+                      - text: "0"
+              - generic [ref=e729]:
+                - link "夏日藍瞳的凝視 夏日藍瞳的凝視" [ref=e730] [cursor=pointer]:
+                  - /url: /artworks/cmk4p7q0a00002ael94h785cj
+                  - img "夏日藍瞳的凝視" [ref=e734]
+                  - heading "夏日藍瞳的凝視" [level=3] [ref=e736]
+                - generic [ref=e737]:
+                  - link "Flying toad Updated Flying toad Updated" [ref=e738] [cursor=pointer]:
+                    - /url: /profile/clwzzk8d30000t4gex8bcu0bi
+                    - generic [ref=e739]:
+                      - img "Flying toad Updated" [ref=e741]
+                      - generic [ref=e743]: Flying toad Updated
+                  - generic [ref=e744]:
+                    - generic [ref=e745] [cursor=pointer]:
+                      - img [ref=e746]
+                      - text: "0"
+                    - generic [ref=e748] [cursor=pointer]:
+                      - img [ref=e749]
+                      - text: "0"
+              - generic [ref=e751]:
+                - link "雨中獨行：赤色跑車的黏土藝術 雨中獨行：赤色跑車的黏土藝術" [ref=e752] [cursor=pointer]:
+                  - /url: /artworks/cmjgvzcky000czih463z9eopx
+                  - img "雨中獨行：赤色跑車的黏土藝術" [ref=e756]
+                  - heading "雨中獨行：赤色跑車的黏土藝術" [level=3] [ref=e758]
+                - generic [ref=e759]:
+                  - link "Upset Blush Upset Blush" [ref=e760] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e761]:
+                      - img "Upset Blush" [ref=e763]
+                      - generic [ref=e765]: Upset Blush
+                  - generic [ref=e766]:
+                    - generic [ref=e767] [cursor=pointer]:
+                      - img [ref=e768]
+                      - text: "0"
+                    - generic [ref=e770] [cursor=pointer]:
+                      - img [ref=e771]
+                      - text: "0"
+              - generic [ref=e773]:
+                - link "可愛麵包坊的歡樂一天 可愛麵包坊的歡樂一天" [ref=e774] [cursor=pointer]:
+                  - /url: /artworks/cmjgvfhm10000zih4k6dqwz05
+                  - img "可愛麵包坊的歡樂一天" [ref=e778]
+                  - heading "可愛麵包坊的歡樂一天" [level=3] [ref=e780]
+                - generic [ref=e781]:
+                  - link "Upset Blush Upset Blush" [ref=e782] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e783]:
+                      - img "Upset Blush" [ref=e785]
+                      - generic [ref=e787]: Upset Blush
+                  - generic [ref=e788]:
+                    - generic [ref=e789] [cursor=pointer]:
+                      - img [ref=e790]
+                      - text: "0"
+                    - generic [ref=e792] [cursor=pointer]:
+                      - img [ref=e793]
+                      - text: "0"
+            - generic [ref=e795]:
+              - generic [ref=e796]:
+                - link "迷你世界：雨後駕車樂 迷你世界：雨後駕車樂" [ref=e797] [cursor=pointer]:
+                  - /url: /artworks/cmkakzc1u0000they9yeln9t7
+                  - img "迷你世界：雨後駕車樂" [ref=e801]
+                  - heading "迷你世界：雨後駕車樂" [level=3] [ref=e803]
+                - generic [ref=e804]:
+                  - link "katie katie" [ref=e805] [cursor=pointer]:
+                    - /url: /profile/cm2eh7jek0000112poirkza15
+                    - generic [ref=e806]:
+                      - img "katie" [ref=e808]
+                      - generic [ref=e810]: katie
+                  - generic [ref=e811]:
+                    - generic [ref=e812] [cursor=pointer]:
+                      - img [ref=e813]
+                      - text: "0"
+                    - generic [ref=e815] [cursor=pointer]:
+                      - img [ref=e816]
+                      - text: "0"
+              - generic [ref=e818]:
+                - link "Upset Blush的新動畫 Upset Blush的新動畫" [ref=e819] [cursor=pointer]:
+                  - /url: /artworks/cmk20o2mf0000kpebsiyq0k27
+                  - img "Upset Blush的新動畫" [ref=e823]
+                  - heading "Upset Blush的新動畫" [level=3] [ref=e825]
+                - generic [ref=e826]:
+                  - link "Upset Blush Upset Blush" [ref=e827] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e828]:
+                      - img "Upset Blush" [ref=e830]
+                      - generic [ref=e832]: Upset Blush
+                  - generic [ref=e833]:
+                    - generic [ref=e834] [cursor=pointer]:
+                      - img [ref=e835]
+                      - text: "0"
+                    - generic [ref=e837] [cursor=pointer]:
+                      - img [ref=e838]
+                      - text: "0"
+              - generic [ref=e840]:
+                - link "櫻花溪畔與富士山 櫻花溪畔與富士山" [ref=e841] [cursor=pointer]:
+                  - /url: /artworks/cmjgvradj000efowfqiaib07v
+                  - img "櫻花溪畔與富士山" [ref=e845]
+                  - heading "櫻花溪畔與富士山" [level=3] [ref=e847]
+                - generic [ref=e848]:
+                  - link "Upset Blush Upset Blush" [ref=e849] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e850]:
+                      - img "Upset Blush" [ref=e852]
+                      - generic [ref=e854]: Upset Blush
+                  - generic [ref=e855]:
+                    - generic [ref=e856] [cursor=pointer]:
+                      - img [ref=e857]
+                      - text: "0"
+                    - generic [ref=e859] [cursor=pointer]:
+                      - img [ref=e860]
+                      - text: "0"
+              - generic [ref=e862]:
+                - link "雨林漫步：老虎與蝴蝶的邂逅 雨林漫步：老虎與蝴蝶的邂逅" [ref=e863] [cursor=pointer]:
+                  - /url: /artworks/cmjgv90c3000014d5hx7lms5o
+                  - img "雨林漫步：老虎與蝴蝶的邂逅" [ref=e867]
+                  - heading "雨林漫步：老虎與蝴蝶的邂逅" [level=3] [ref=e869]
+                - generic [ref=e870]:
+                  - link "Upset Blush Upset Blush" [ref=e871] [cursor=pointer]:
+                    - /url: /profile/cmj13ju7v00093h4ft3ws3cp6
+                    - generic [ref=e872]:
+                      - img "Upset Blush" [ref=e874]
+                      - generic [ref=e876]: Upset Blush
+                  - generic [ref=e877]:
+                    - generic [ref=e878] [cursor=pointer]:
+                      - img [ref=e879]
+                      - text: "0"
+                    - generic [ref=e881] [cursor=pointer]:
+                      - img [ref=e882]
+                      - text: "0"
+  - alert [ref=e885]
+```
