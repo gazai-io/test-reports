@@ -1,0 +1,3832 @@
+{
+  "config": {
+    "configFile": "/home/runner/work/gazai/gazai/playwright.config.ts",
+    "rootDir": "/home/runner/work/gazai/gazai/tests/e2e",
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 10,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/gazai-io/gazai/commit/cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+        "commitHash": "cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+        "buildHref": "https://github.com/gazai-io/gazai/actions/runs/26996658575"
+      },
+      "gitCommit": {
+        "shortHash": "cb5daf6",
+        "hash": "cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+        "subject": "feat(TSK-4815): admin generation failure error disclosure (#1648)",
+        "body": "feat(TSK-4815): admin generation failure error disclosure (#1648)\n\n* feat(TSK-4815): show translated failure reason in admin image details\n\nHelp admins diagnose failed generations by surfacing localized error messages in the image management detail panel.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* feat(TSK-4815): align admin and frontend generation error disclosure\n\nShow translated or raw errors on admin image/video cards, and keep frontend text gallery failures localized with type-specific fallbacks.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* feat(TSK-4815): map provider generation errors to translated user messages\n\nAdd shared mappers for FAL, RunPod API, and webhook failures so admin and\nfrontend surfaces show localized copy instead of raw provider strings.\nSplit image/video mappings, add parameterized templates for limits and\nranges, store cleaner webhook errors, and add admin video status filtering.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* fix(TSK-4815): harden generation error mapping after code review\n\nRoute stable error IDs through formatMappedGenerationError so parameterized\nmessages interpolate correctly in admin, frontend, and AI tool toasts.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n---------\n\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "author": {
+          "name": "katie5413",
+          "email": "katie87827@gmail.com",
+          "time": 1780635874000
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "time": 1780635874000
+        },
+        "branch": "HEAD"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/gazai/gazai/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/gazai-io/gazai/commit/cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+            "commitHash": "cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+            "buildHref": "https://github.com/gazai-io/gazai/actions/runs/26996658575"
+          },
+          "gitCommit": {
+            "shortHash": "cb5daf6",
+            "hash": "cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+            "subject": "feat(TSK-4815): admin generation failure error disclosure (#1648)",
+            "body": "feat(TSK-4815): admin generation failure error disclosure (#1648)\n\n* feat(TSK-4815): show translated failure reason in admin image details\n\nHelp admins diagnose failed generations by surfacing localized error messages in the image management detail panel.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* feat(TSK-4815): align admin and frontend generation error disclosure\n\nShow translated or raw errors on admin image/video cards, and keep frontend text gallery failures localized with type-specific fallbacks.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* feat(TSK-4815): map provider generation errors to translated user messages\n\nAdd shared mappers for FAL, RunPod API, and webhook failures so admin and\nfrontend surfaces show localized copy instead of raw provider strings.\nSplit image/video mappings, add parameterized templates for limits and\nranges, store cleaner webhook errors, and add admin video status filtering.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* fix(TSK-4815): harden generation error mapping after code review\n\nRoute stable error IDs through formatMappedGenerationError so parameterized\nmessages interpolate correctly in admin, frontend, and AI tool toasts.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n---------\n\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+            "author": {
+              "name": "katie5413",
+              "email": "katie87827@gmail.com",
+              "time": 1780635874000
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com",
+              "time": 1780635874000
+            },
+            "branch": "HEAD"
+          },
+          "actualWorkers": 1
+        },
+        "id": "setup",
+        "name": "setup",
+        "testDir": "/home/runner/work/gazai/gazai/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/auth\\.setup\\.ts/"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/home/runner/work/gazai/gazai/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/gazai-io/gazai/commit/cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+            "commitHash": "cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+            "buildHref": "https://github.com/gazai-io/gazai/actions/runs/26996658575"
+          },
+          "gitCommit": {
+            "shortHash": "cb5daf6",
+            "hash": "cb5daf6bf8196d94d70ea6b9cb20c8e19dd4b3f1",
+            "subject": "feat(TSK-4815): admin generation failure error disclosure (#1648)",
+            "body": "feat(TSK-4815): admin generation failure error disclosure (#1648)\n\n* feat(TSK-4815): show translated failure reason in admin image details\n\nHelp admins diagnose failed generations by surfacing localized error messages in the image management detail panel.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* feat(TSK-4815): align admin and frontend generation error disclosure\n\nShow translated or raw errors on admin image/video cards, and keep frontend text gallery failures localized with type-specific fallbacks.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* feat(TSK-4815): map provider generation errors to translated user messages\n\nAdd shared mappers for FAL, RunPod API, and webhook failures so admin and\nfrontend surfaces show localized copy instead of raw provider strings.\nSplit image/video mappings, add parameterized templates for limits and\nranges, store cleaner webhook errors, and add admin video status filtering.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n* fix(TSK-4815): harden generation error mapping after code review\n\nRoute stable error IDs through formatMappedGenerationError so parameterized\nmessages interpolate correctly in admin, frontend, and AI tool toasts.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\n\n---------\n\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+            "author": {
+              "name": "katie5413",
+              "email": "katie87827@gmail.com",
+              "time": 1780635874000
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com",
+              "time": 1780635874000
+            },
+            "branch": "HEAD"
+          },
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/runner/work/gazai/gazai/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report",
+          "host": "0.0.0.0"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "runAgents": "none",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.58.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth.setup.ts",
+      "file": "auth.setup.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "authenticate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24938,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🚀 E2E Auth Setup: Logging in to save authentication state...\n"
+                    },
+                    {
+                      "text": "   Target: https://gazai-5e0k63vsr-gazai.vercel.app\n"
+                    },
+                    {
+                      "text": "   User: e2e@gazai.io\n"
+                    },
+                    {
+                      "text": "   🔐 Not logged in, starting login flow...\n"
+                    },
+                    {
+                      "text": "   ✅ Login successful\n"
+                    },
+                    {
+                      "text": "   ✅ Claimed daily tokens (will not appear in subsequent tests)\n"
+                    },
+                    {
+                      "text": "   ✅ Authentication state saved to: /home/runner/work/gazai/gazai/.auth/e2e-user.json\n"
+                    },
+                    {
+                      "text": "🎉 Auth setup complete! All tests will reuse this session.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-06-05T05:10:00.325Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "17e3fe6f4d9d8bd79c6b-60f085b113a677673906",
+          "file": "auth.setup.ts",
+          "line": 15,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-basic.spec.ts",
+      "file": "canvas/canvas-basic.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas 未登入測試",
+          "file": "canvas/canvas-basic.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "未登入時不能使用 Canvas 功能",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5038,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 未登入狀態驗證通過\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:10:29.894Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "73589ae0195e21f692b3-231ef3e88ca4d4cea704",
+              "file": "canvas/canvas-basic.spec.ts",
+              "line": 9,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Canvas 基本功能測試",
+          "file": "canvas/canvas-basic.spec.ts",
+          "line": 27,
+          "column": 6,
+          "specs": [
+            {
+              "title": "登入後可以新增畫布",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 21775,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 成功新增畫布: cmq0gucz90004eggwvryf7vch\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0gucz90004eggwvryf7vch\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:10:35.199Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "73589ae0195e21f692b3-7861ced6043ede99391e",
+              "file": "canvas/canvas-basic.spec.ts",
+              "line": 42,
+              "column": 7
+            },
+            {
+              "title": "可以編輯畫布的名稱",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 27567,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 成功編輯畫布名稱: 測試畫布名稱 1780636265649\n"
+                        },
+                        {
+                          "text": "✅ 畫布名稱驗證成功: 測試畫布名稱 1780636265649\n"
+                        },
+                        {
+                          "text": "✅ 成功編輯畫布名稱: 測試畫布名稱 1780636265649\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0gut780001113j2999ujp8\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:10:57.022Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "73589ae0195e21f692b3-157a0f43794c633ac4fb",
+              "file": "canvas/canvas-basic.spec.ts",
+              "line": 65,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-creation.spec.ts",
+      "file": "canvas/canvas-creation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Journey #2: Canvas Creation",
+          "file": "canvas/canvas-creation.spec.ts",
+          "line": 15,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Creating Canvas",
+              "file": "canvas/canvas-creation.spec.ts",
+              "line": 36,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should navigate to canvas page when clicking create new canvas",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 23730,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ Created canvas and landed on canvas page\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "🧹 Cleaned up canvas: cmq0gvijc0001zq524ccyjspd\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:11:24.643Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b249570ce7e22d46688f-b76f7e7d14141586d4e3",
+                  "file": "canvas/canvas-creation.spec.ts",
+                  "line": 37,
+                  "column": 9
+                },
+                {
+                  "title": "Should rename newly created canvas",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 39942,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ 對話框檢查完成\n"
+                            },
+                            {
+                              "text": "🔍 檢查 AI Chat 狀態...\n"
+                            },
+                            {
+                              "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                            },
+                            {
+                              "text": "✅ 初始對話框處理完成\n"
+                            },
+                            {
+                              "text": "✅ Canvas 元素載入完成\n"
+                            },
+                            {
+                              "text": "✏️  Renaming canvas cmq0gw12e0003113jttb9vzfi to: Regression Test 1780636322290\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ Canvas renamed successfully to: Regression Test 1780636322290\n"
+                            },
+                            {
+                              "text": "✅ Canvas renamed to: Regression Test 1780636322290\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "🧹 Cleaned up canvas: cmq0gw12e0003113jttb9vzfi\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:11:48.426Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b249570ce7e22d46688f-9ac56bcc2ea4d5e29896",
+                  "file": "canvas/canvas-creation.spec.ts",
+                  "line": 59,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-gallery.spec.ts",
+      "file": "canvas/canvas-gallery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Journey #2: Canvas Gallery",
+          "file": "canvas/canvas-gallery.spec.ts",
+          "line": 16,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Navigate to Canvas Drafts Page",
+              "file": "canvas/canvas-gallery.spec.ts",
+              "line": 23,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should navigate to canvas drafts page and see canvas gallery",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 10802,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ Successfully navigated to canvas gallery page\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:12:28.418Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-ceee89a727a9d6a808fe",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 24,
+                  "column": 9
+                },
+                {
+                  "title": "Should see sample canvases when available",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 10410,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "📊 Total draft cards: 10, sample cards: 0\n"
+                            },
+                            {
+                              "text": "⚠️  No sample canvases in this environment - skipping\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:12:39.258Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-9227ddf2a02c6df27ec4",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 41,
+                  "column": 9
+                },
+                {
+                  "title": "Should show create new canvas entry without canvas-count quota",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 19790,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "📊 Canvas gallery: no per-plan canvas count quota UI (unlimited canvases)\n"
+                            },
+                            {
+                              "text": "✅ Create canvas card visible; no canvas number cap in UI\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:12:49.691Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-9d93f2a77b1c883ab1d1",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 66,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Navigate to Sample Canvas",
+              "file": "canvas/canvas-gallery.spec.ts",
+              "line": 78,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should open and view a sample canvas",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-gallery.spec.ts",
+                            "line": 89,
+                            "column": 14
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "skipped",
+                          "duration": 10287,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "⚠️  No sample canvas found - skipping test\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:13:09.512Z",
+                          "annotations": [
+                            {
+                              "type": "skip",
+                              "location": {
+                                "file": "/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-gallery.spec.ts",
+                                "line": 89,
+                                "column": 14
+                              }
+                            }
+                          ],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-080db993e749e2078356",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 79,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Renaming Canvases",
+              "file": "canvas/canvas-gallery.spec.ts",
+              "line": 105,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should rename a canvas successfully",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 47958,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ 對話框檢查完成\n"
+                            },
+                            {
+                              "text": "🔍 檢查 AI Chat 狀態...\n"
+                            },
+                            {
+                              "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                            },
+                            {
+                              "text": "✅ 初始對話框處理完成\n"
+                            },
+                            {
+                              "text": "✅ Canvas 元素載入完成\n"
+                            },
+                            {
+                              "text": "✏️  Renaming canvas cmq0gxzoc0001foxn3t0bb9ri to: Test Canvas 1780636413790\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ Canvas renamed successfully to: Test Canvas 1780636413790\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ Canvas renamed successfully to: Test Canvas 1780636413790\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:13:19.831Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-a8bd30b98094e2fe522b",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 106,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Deleting Canvas",
+              "file": "canvas/canvas-gallery.spec.ts",
+              "line": 137,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should delete a non-sample canvas and remove it from the gallery",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 35204,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ 對話框檢查完成\n"
+                            },
+                            {
+                              "text": "🔍 檢查 AI Chat 狀態...\n"
+                            },
+                            {
+                              "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                            },
+                            {
+                              "text": "✅ 初始對話框處理完成\n"
+                            },
+                            {
+                              "text": "✅ Canvas 元素載入完成\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                            },
+                            {
+                              "text": "❌ 每日領金幣彈窗未找到\n"
+                            },
+                            {
+                              "text": "✅ Non-sample canvas deleted and removed from the gallery\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:14:07.812Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-4897d31d7bf6dc89f9c1",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 138,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-layout.spec.ts",
+      "file": "canvas/canvas-layout.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Layout - No Global Navigation",
+          "file": "canvas/canvas-layout.spec.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "canvas list shows global header; detail has no header or AppSidebar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 17953,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 成功編輯畫布名稱: Layout Test 1780636777317\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:19:17.624Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "380abb7e1b5c7152a3d8-81bd7566612bac1b26fb",
+              "file": "canvas/canvas-layout.spec.ts",
+              "line": 21,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-panel.spec.ts",
+      "file": "canvas/canvas-object-panel.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Panel 物件操作測試",
+          "file": "canvas/canvas-object-panel.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "可以建立新的 panel",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 14441,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: panel\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: panel\n"
+                        },
+                        {
+                          "text": "🖱️  拖拽建立面板: 起始位置 (400, 0), 尺寸 300x300\n"
+                        },
+                        {
+                          "text": "🖱️  拖拽操作: (400, 0) → (700, 300)\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: panel\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：建立新的 panel\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:19:44.573Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "98d107912f2c6a1752f9-3d52db283f93b4f4441f",
+              "file": "canvas/canvas-object-panel.spec.ts",
+              "line": 18,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-shape.spec.ts",
+      "file": "canvas/canvas-object-shape.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Shape 物件操作測試",
+          "file": "canvas/canvas-object-shape.spec.ts",
+          "line": 11,
+          "column": 6,
+          "specs": [
+            {
+              "title": "可以建立圓形、矩形、星形與多邊形",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 35965,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: circle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (500, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (500, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (500, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (500, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (500, 300)\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: shapes\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: shapes\n"
+                        },
+                        {
+                          "text": "✅ 重試成功選擇形狀: rectangle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (550, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (550, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (550, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (550, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (550, 300)\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: star\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (600, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (600, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (600, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (600, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (600, 300)\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: polygon\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (650, 400), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (650, 400) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (650, 400)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (650, 400)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (650, 400)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "❌ 選擇形狀失敗: rectangle ExpectError: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('shape-rectangle-button')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('shape-rectangle-button')\u001b[22m\n\n    at CanvasHelper.selectShape \u001b[90m(/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-helper.ts:490:33\u001b[90m)\u001b[39m\n    at CanvasHelper.addShapeAtPosition \u001b[90m(/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-helper.ts:677:5\u001b[90m)\u001b[39m\n    at \u001b[90m/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-object-shape.spec.ts:23:7 {\n  matcherResult: {\n    message: \u001b[32m'\\x1B[2mexpect(\\x1B[22m\\x1B[31mlocator\\x1B[39m\\x1B[2m).\\x1B[22mtoBeVisible\\x1B[2m(\\x1B[22m\\x1B[2m)\\x1B[22m failed\\n'\u001b[39m +\n      \u001b[32m'\\n'\u001b[39m +\n      \u001b[32m\"Locator: getByTestId('shape-rectangle-button')\\n\"\u001b[39m +\n      \u001b[32m'Expected: visible\\n'\u001b[39m +\n      \u001b[32m'Timeout: 10000ms\\n'\u001b[39m +\n      \u001b[32m'Error: element(s) not found\\n'\u001b[39m +\n      \u001b[32m'\\n'\u001b[39m +\n      \u001b[32m'Call log:\\n'\u001b[39m +\n      \u001b[32m'\\x1B[2m  - Expect \"toBeVisible\" with timeout 10000ms\\x1B[22m\\n'\u001b[39m +\n      \u001b[32m\"\\x1B[2m  - waiting for getByTestId('shape-rectangle-button')\\x1B[22m\\n\"\u001b[39m,\n    pass: \u001b[33mfalse\u001b[39m,\n    actual: \u001b[90mundefined\u001b[39m,\n    name: \u001b[32m'toBeVisible'\u001b[39m,\n    expected: \u001b[32m'visible'\u001b[39m,\n    log: [\n      \u001b[32m'  - Expect \"toBeVisible\" with timeout 10000ms'\u001b[39m,\n      \u001b[32m\"  - waiting for getByTestId('shape-rectangle-button')\"\u001b[39m\n    ],\n    timeout: \u001b[33m10000\u001b[39m\n  },\n  \u001b[32mSymbol(step)\u001b[39m: {\n    category: \u001b[32m'expect'\u001b[39m,\n    apiName: \u001b[32m'expect.toBeVisible'\u001b[39m,\n    title: \u001b[32m`Expect \"toBeVisible\" getByTestId('shape-rectangle-button')`\u001b[39m,\n    shortTitle: \u001b[32m'Expect \"toBeVisible\"'\u001b[39m,\n    params: { expected: \u001b[36m[Object]\u001b[39m },\n    infectParentStepsWithError: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'expect@71'\u001b[39m,\n    group: \u001b[90mundefined\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    location: {\n      file: \u001b[32m'/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts'\u001b[39m,\n      line: \u001b[33m490\u001b[39m,\n      column: \u001b[33m33\u001b[39m,\n      function: \u001b[32m'CanvasHelper.selectShape'\u001b[39m\n    },\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'expect@71'\u001b[39m,\n      _title: \u001b[32m`Expect \"toBeVisible\" getByTestId('shape-rectangle-button')`\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1780636825083\u001b[39m,\n    error: {\n      message: \u001b[32m'Error: \\x1B[2mexpect(\\x1B[22m\\x1B[31mlocator\\x1B[39m\\x1B[2m).\\x1B[22mtoBeVisible\\x1B[2m(\\x1B[22m\\x1B[2m)\\x1B[22m failed\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m\"Locator: getByTestId('shape-rectangle-button')\\n\"\u001b[39m +\n        \u001b[32m'Expected: visible\\n'\u001b[39m +\n        \u001b[32m'Timeout: 10000ms\\n'\u001b[39m +\n        \u001b[32m'Error: element(s) not found\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - Expect \"toBeVisible\" with timeout 10000ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for getByTestId('shape-rectangle-button')\\x1B[22m\\n\"\u001b[39m,\n      stack: \u001b[32m'Error: \\x1B[2mexpect(\\x1B[22m\\x1B[31mlocator\\x1B[39m\\x1B[2m).\\x1B[22mtoBeVisible\\x1B[2m(\\x1B[22m\\x1B[2m)\\x1B[22m failed\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m\"Locator: getByTestId('shape-rectangle-button')\\n\"\u001b[39m +\n        \u001b[32m'Expected: visible\\n'\u001b[39m +\n        \u001b[32m'Timeout: 10000ms\\n'\u001b[39m +\n        \u001b[32m'Error: element(s) not found\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - Expect \"toBeVisible\" with timeout 10000ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for getByTestId('shape-rectangle-button')\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at CanvasHelper.selectShape (/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts:490:33)\\n'\u001b[39m +\n        \u001b[32m'    at CanvasHelper.addShapeAtPosition (/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts:677:5)\\n'\u001b[39m +\n        \u001b[32m'    at /home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-object-shape.spec.ts:23:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:19:59.089Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f5fb6adffaa126df267-c0a2091c3af40b17116a",
+              "file": "canvas/canvas-object-shape.spec.ts",
+              "line": 21,
+              "column": 7
+            },
+            {
+              "title": "可以移動 shape 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 16995,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: rectangle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "🖱️  移動物件: (400, 300) → (450, 350)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:20:35.103Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f5fb6adffaa126df267-5a2a9fc445553a1a5d5a",
+              "file": "canvas/canvas-object-shape.spec.ts",
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "可以刪除 shape 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 32063,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m4\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m4\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at /home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-object-shape.spec.ts:43:5",
+                        "location": {
+                          "file": "/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-object-shape.spec.ts",
+                          "column": 5,
+                          "line": 43
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 41 |\u001b[39m\n \u001b[90m 42 |\u001b[39m     \u001b[36mawait\u001b[39m canvasHelper\u001b[33m.\u001b[39mdeleteSelectedObject()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 43 |\u001b[39m     \u001b[36mawait\u001b[39m expect\n \u001b[90m    |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 44 |\u001b[39m       \u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m canvasHelper\u001b[33m.\u001b[39mcountObjectsInLayers(\u001b[32m'shape'\u001b[39m))\n \u001b[90m 45 |\u001b[39m       \u001b[33m.\u001b[39mtoBe(initialShapeCount)\u001b[33m;\u001b[39m\n \u001b[90m 46 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-object-shape.spec.ts",
+                            "column": 5,
+                            "line": 43
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m4\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  41 |\n  42 |     await canvasHelper.deleteSelectedObject();\n> 43 |     await expect\n     |     ^\n  44 |       .poll(() => canvasHelper.countObjectsInLayers('shape'))\n  45 |       .toBe(initialShapeCount);\n  46 |   });\n    at /home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-object-shape.spec.ts:43:5"
+                        },
+                        {
+                          "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 3\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: circle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (500, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (500, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (500, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (500, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (500, 300)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0h5k7e000fzq52m4mvyr1h\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:20:52.152Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/gazai/gazai/test-results/canvas-canvas-object-shape-Canvas-Shape-物件操作測試-可以刪除-shape-物件-chromium/test-failed-2.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/gazai/gazai/test-results/canvas-canvas-object-shape-Canvas-Shape-物件操作測試-可以刪除-shape-物件-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/runner/work/gazai/gazai/test-results/canvas-canvas-object-shape-Canvas-Shape-物件操作測試-可以刪除-shape-物件-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-object-shape.spec.ts",
+                        "column": 5,
+                        "line": 43
+                      }
+                    },
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 27007,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 0\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: shapes\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: shapes\n"
+                        },
+                        {
+                          "text": "✅ 重試成功選擇形狀: circle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (500, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (500, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (500, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (500, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (500, 300)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 1\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 0\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "❌ 選擇形狀失敗: circle ExpectError: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('tool-shapes')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('tool-shapes')\u001b[22m\n\n    at CanvasHelper.selectShape \u001b[90m(/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-helper.ts:484:34\u001b[90m)\u001b[39m\n    at CanvasHelper.addShapeAtPosition \u001b[90m(/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-helper.ts:677:5\u001b[90m)\u001b[39m\n    at \u001b[90m/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-object-shape.spec.ts:37:5 {\n  matcherResult: {\n    message: \u001b[32m'\\x1B[2mexpect(\\x1B[22m\\x1B[31mlocator\\x1B[39m\\x1B[2m).\\x1B[22mtoBeVisible\\x1B[2m(\\x1B[22m\\x1B[2m)\\x1B[22m failed\\n'\u001b[39m +\n      \u001b[32m'\\n'\u001b[39m +\n      \u001b[32m\"Locator: getByTestId('tool-shapes')\\n\"\u001b[39m +\n      \u001b[32m'Expected: visible\\n'\u001b[39m +\n      \u001b[32m'Timeout: 10000ms\\n'\u001b[39m +\n      \u001b[32m'Error: element(s) not found\\n'\u001b[39m +\n      \u001b[32m'\\n'\u001b[39m +\n      \u001b[32m'Call log:\\n'\u001b[39m +\n      \u001b[32m'\\x1B[2m  - Expect \"toBeVisible\" with timeout 10000ms\\x1B[22m\\n'\u001b[39m +\n      \u001b[32m\"\\x1B[2m  - waiting for getByTestId('tool-shapes')\\x1B[22m\\n\"\u001b[39m,\n    pass: \u001b[33mfalse\u001b[39m,\n    actual: \u001b[90mundefined\u001b[39m,\n    name: \u001b[32m'toBeVisible'\u001b[39m,\n    expected: \u001b[32m'visible'\u001b[39m,\n    log: [\n      \u001b[32m'  - Expect \"toBeVisible\" with timeout 10000ms'\u001b[39m,\n      \u001b[32m\"  - waiting for getByTestId('tool-shapes')\"\u001b[39m\n    ],\n    timeout: \u001b[33m10000\u001b[39m\n  },\n  \u001b[32mSymbol(step)\u001b[39m: {\n    category: \u001b[32m'expect'\u001b[39m,\n    apiName: \u001b[32m'expect.toBeVisible'\u001b[39m,\n    title: \u001b[32m`Expect \"toBeVisible\" getByTestId('tool-shapes')`\u001b[39m,\n    shortTitle: \u001b[32m'Expect \"toBeVisible\"'\u001b[39m,\n    params: { expected: \u001b[36m[Object]\u001b[39m },\n    infectParentStepsWithError: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'expect@75'\u001b[39m,\n    group: \u001b[90mundefined\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    location: {\n      file: \u001b[32m'/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts'\u001b[39m,\n      line: \u001b[33m484\u001b[39m,\n      column: \u001b[33m34\u001b[39m,\n      function: \u001b[32m'CanvasHelper.selectShape'\u001b[39m\n    },\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'expect@75'\u001b[39m,\n      _title: \u001b[32m`Expect \"toBeVisible\" getByTestId('tool-shapes')`\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1780637021992\u001b[39m,\n    error: {\n      message: \u001b[32m'Error: \\x1B[2mexpect(\\x1B[22m\\x1B[31mlocator\\x1B[39m\\x1B[2m).\\x1B[22mtoBeVisible\\x1B[2m(\\x1B[22m\\x1B[2m)\\x1B[22m failed\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m\"Locator: getByTestId('tool-shapes')\\n\"\u001b[39m +\n        \u001b[32m'Expected: visible\\n'\u001b[39m +\n        \u001b[32m'Timeout: 10000ms\\n'\u001b[39m +\n        \u001b[32m'Error: element(s) not found\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - Expect \"toBeVisible\" with timeout 10000ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for getByTestId('tool-shapes')\\x1B[22m\\n\"\u001b[39m,\n      stack: \u001b[32m'Error: \\x1B[2mexpect(\\x1B[22m\\x1B[31mlocator\\x1B[39m\\x1B[2m).\\x1B[22mtoBeVisible\\x1B[2m(\\x1B[22m\\x1B[2m)\\x1B[22m failed\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m\"Locator: getByTestId('tool-shapes')\\n\"\u001b[39m +\n        \u001b[32m'Expected: visible\\n'\u001b[39m +\n        \u001b[32m'Timeout: 10000ms\\n'\u001b[39m +\n        \u001b[32m'Error: element(s) not found\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - Expect \"toBeVisible\" with timeout 10000ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for getByTestId('tool-shapes')\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at CanvasHelper.selectShape (/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts:484:34)\\n'\u001b[39m +\n        \u001b[32m'    at CanvasHelper.addShapeAtPosition (/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts:677:5)\\n'\u001b[39m +\n        \u001b[32m'    at /home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-object-shape.spec.ts:37:5'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 1,
+                      "startTime": "2026-06-05T05:23:11.805Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "flaky"
+                }
+              ],
+              "id": "2f5fb6adffaa126df267-de54b0b4b8bd7fba741d",
+              "file": "canvas/canvas-object-shape.spec.ts",
+              "line": 34,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-speech.spec.ts",
+      "file": "canvas/canvas-object-speech.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas 文字物件操作測試",
+          "file": "canvas/canvas-object-speech.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "綜合測試：所有功能組合使用",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 39974,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增文字，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: speech\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: speech\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取第一個物件: text\n"
+                        },
+                        {
+                          "text": "✅ 文字字體大小已修改為: 18\n"
+                        },
+                        {
+                          "text": "✅ 文字顏色已修改為: #FF6600\n"
+                        },
+                        {
+                          "text": "🔍 確保屬性面板可訪問...\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "⏳ 屬性面板仍被遮擋，重試 1/3...\n"
+                        },
+                        {
+                          "text": "⏳ 屬性面板仍被遮擋，重試 2/3...\n"
+                        },
+                        {
+                          "text": "⚠️ 屬性面板可能仍被遮擋，但繼續執行\n"
+                        },
+                        {
+                          "text": "✅ 文字方向已修改為: vertical\n"
+                        },
+                        {
+                          "text": "✅ 文字對齊已修改為: center\n"
+                        },
+                        {
+                          "text": "🔄 粗體狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "🔄 斜體狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "🔄 底線狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "✅ 文字樣式已修改完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡樣式已修改為: cloud-1\n"
+                        },
+                        {
+                          "text": "✅ 氣泡背景色已修改為: #FFFF00\n"
+                        },
+                        {
+                          "text": "✅ 氣泡匡線顏色已修改為: #FF0000\n"
+                        },
+                        {
+                          "text": "✅ 氣泡尾巴已開啟\n"
+                        },
+                        {
+                          "text": "🔍 開始驗證所有設置...\n"
+                        },
+                        {
+                          "text": "✅ 文字內容驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字顏色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字方向驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字對齊驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字樣式驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡背景色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡框線顏色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡尾巴狀態驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 所有設置驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：所有功能綜合使用\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "⚠️ 關閉 AI Chat 失敗: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('canvas-ai-chat-close-button')\u001b[22m\n\u001b[2m    - locator resolved to <button data-state=\"closed\" data-sentry-element=\"Button\" data-sentry-source-file=\"chat.tsx\" data-testid=\"canvas-ai-chat-close-button\" class=\"inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-accent hover:text-accent-foreground h-auto…>…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  26 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at CanvasHelper.closeAiChat \u001b[90m(/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-helper.ts:1467:27\u001b[90m)\u001b[39m\n    at CanvasHelper.ensurePropertiesPanelAccessible \u001b[90m(/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-helper.ts:1490:7\u001b[90m)\u001b[39m\n    at \u001b[90m/home/runner/work/gazai/gazai/\u001b[39mtests/e2e/canvas/canvas-object-speech.spec.ts:40:7 {\n  name: \u001b[32m'TimeoutError'\u001b[39m,\n  \u001b[32mSymbol(step)\u001b[39m: {\n    location: {\n      file: \u001b[32m'/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts'\u001b[39m,\n      line: \u001b[33m1467\u001b[39m,\n      column: \u001b[33m27\u001b[39m,\n      function: \u001b[32m'CanvasHelper.closeAiChat'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m\"Click getByTestId('canvas-ai-chat-close-button')\"\u001b[39m,\n    apiName: \u001b[32m'locator.click'\u001b[39m,\n    params: {\n      selector: \u001b[32m'internal:testid=[data-testid=\"canvas-ai-chat-close-button\"s]'\u001b[39m,\n      strict: \u001b[33mtrue\u001b[39m,\n      timeout: \u001b[33m15000\u001b[39m\n    },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@73'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@73'\u001b[39m,\n      _title: \u001b[32m\"Click getByTestId('canvas-ai-chat-close-button')\"\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1780637059799\u001b[39m,\n    error: {\n      message: \u001b[32m'TimeoutError: locator.click: Timeout 15000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for getByTestId('canvas-ai-chat-close-button')\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\x1B[2m    - locator resolved to <button data-state=\"closed\" data-sentry-element=\"Button\" data-sentry-source-file=\"chat.tsx\" data-testid=\"canvas-ai-chat-close-button\" class=\"inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-accent hover:text-accent-foreground h-auto…>…</button>\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - attempting click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    2 × waiting for element to be visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - element is visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - scrolling into view if needed\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - done scrolling\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - retrying click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - waiting 20ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    2 × waiting for element to be visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - element is visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - scrolling into view if needed\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - done scrolling\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - retrying click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - waiting 100ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - waiting for element to be visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - element is not stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  26 × retrying click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - waiting 500ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - waiting for element to be visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - element is visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - scrolling into view if needed\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - done scrolling\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - retrying click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - waiting 500ms\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'TimeoutError: locator.click: Timeout 15000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for getByTestId('canvas-ai-chat-close-button')\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\x1B[2m    - locator resolved to <button data-state=\"closed\" data-sentry-element=\"Button\" data-sentry-source-file=\"chat.tsx\" data-testid=\"canvas-ai-chat-close-button\" class=\"inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent hover:bg-accent hover:text-accent-foreground h-auto…>…</button>\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - attempting click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    2 × waiting for element to be visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - element is visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - scrolling into view if needed\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - done scrolling\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - retrying click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - waiting 20ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    2 × waiting for element to be visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - element is visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - scrolling into view if needed\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - done scrolling\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - retrying click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m      - waiting 100ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - waiting for element to be visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - element is not stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  26 × retrying click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - waiting 500ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - waiting for element to be visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - element is visible, enabled and stable\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - scrolling into view if needed\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - done scrolling\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m       - <img width=\"64\" height=\"64\" alt=\"AI Chat\" data-nimg=\"1\" loading=\"lazy\" decoding=\"async\" data-sentry-element=\"Image\" class=\"w-16 h-16 object-contain drop-shadow-lg\" data-sentry-source-file=\"agent-panel-toggle-button.tsx\" src=\"/images/gazai-chan-toggle.png?__nextImageWidth=128\" srcset=\"/images/gazai-chan-toggle.png?__nextImageWidth=64 1x, /images/gazai-chan-toggle.png?__nextImageWidth=128 2x\"/> from <div class=\"absolute top-0 right-2 z-10 block\">…</div> subtree intercepts pointer events\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - retrying click action\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - waiting 500ms\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at CanvasHelper.closeAiChat (/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts:1467:27)\\n'\u001b[39m +\n        \u001b[32m'    at CanvasHelper.ensurePropertiesPanelAccessible (/home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-helper.ts:1490:7)\\n'\u001b[39m +\n        \u001b[32m'    at /home/runner/work/gazai/gazai/tests/e2e/canvas/canvas-object-speech.spec.ts:40:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:23:46.944Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dcca6fd7c28e4bbb7850-af2110b188b81dc2d7d0",
+              "file": "canvas/canvas-object-speech.spec.ts",
+              "line": 20,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-text-v2.spec.ts",
+      "file": "canvas/canvas-object-text-v2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas TextV2 物件操作測試",
+          "file": "canvas/canvas-object-text-v2.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "從工具列點擊建立 TextV2 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 26076,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🚀 開始設置測試環境...\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 建立 Canvas: cmq0gzp330001i3enh1lpfs70\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 測試環境設置成功\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: textV2\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：從工具列建立 TextV2\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0gzp330001i3enh1lpfs70\n"
+                        },
+                        {
+                          "text": "✅ 清理測試畫布完成: cmq0gzp330001i3enh1lpfs70\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:14:43.059Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-8de17963e22f1e971868",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 38,
+              "column": 7
+            },
+            {
+              "title": "使用 T 快捷鍵建立 TextV2 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 25128,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🚀 開始設置測試環境...\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 建立 Canvas: cmq0h08cd0005zq52q6bcx67n\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 測試環境設置成功\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: select\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: select\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: textV2\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：使用 T 快捷鍵建立 TextV2\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0h08cd0005zq52q6bcx67n\n"
+                        },
+                        {
+                          "text": "✅ 清理測試畫布完成: cmq0h08cd0005zq52q6bcx67n\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:15:09.174Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-5727d3af9c58f0e37ee0",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 53,
+              "column": 7
+            },
+            {
+              "title": "透過屬性面板編輯 TextV2 文字內容",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 23211,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🚀 開始設置測試環境...\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 建立 Canvas: cmq0h0rd60007zq52yt5yfble\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 測試環境設置成功\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：編輯 TextV2 文字內容\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0h0rd60007zq52yt5yfble\n"
+                        },
+                        {
+                          "text": "✅ 清理測試畫布完成: cmq0h0rd60007zq52yt5yfble\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:15:34.333Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-1c8397e2078743e7c063",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 72,
+              "column": 7
+            },
+            {
+              "title": "透過屬性面板修改 TextV2 字體大小",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 26545,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🚀 開始設置測試環境...\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 建立 Canvas: cmq0h19di0003i3en0j9fpz34\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 測試環境設置成功\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增 TextV2，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取第一個物件: textV2\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：修改 TextV2 字體大小\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0h19di0003i3en0j9fpz34\n"
+                        },
+                        {
+                          "text": "✅ 清理測試畫布完成: cmq0h19di0003i3en0j9fpz34\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:15:57.582Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-7996c9cb04546e400cc2",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 94,
+              "column": 7
+            },
+            {
+              "title": "刪除 TextV2 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 26049,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🚀 開始設置測試環境...\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 建立 Canvas: cmq0h1ttl0009zq52ly3v1729\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 測試環境設置成功\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增 TextV2，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: textV2\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取第一個物件: textV2\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中確認沒有此類型物件: textV2\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：刪除 TextV2 物件\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0h1ttl0009zq52ly3v1729\n"
+                        },
+                        {
+                          "text": "✅ 清理測試畫布完成: cmq0h1ttl0009zq52ly3v1729\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:16:24.174Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-7b9260b9689ce484df7e",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 125,
+              "column": 7
+            },
+            {
+              "title": "複製貼上 TextV2 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 28312,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🚀 開始設置測試環境...\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 建立 Canvas: cmq0h2dop000bzq527gnsobzu\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 測試環境設置成功\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增 TextV2，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 1\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取第一個物件: textV2\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 2\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：複製貼上 TextV2 物件\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0h2dop000bzq527gnsobzu\n"
+                        },
+                        {
+                          "text": "✅ 清理測試畫布完成: cmq0h2dop000bzq527gnsobzu\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:16:50.270Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-d4901b416c52d2977f8c",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 148,
+              "column": 7
+            },
+            {
+              "title": "撤銷/重做 TextV2 建立操作",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 26343,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🚀 開始設置測試環境...\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 建立 Canvas: cmq0h2ztf0005113jwlrk04hy\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 測試環境設置成功\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增 TextV2，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: textV2\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中確認沒有此類型物件: textV2\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: textV2\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：撤銷/重做 TextV2 建立操作\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0h2ztf0005113jwlrk04hy\n"
+                        },
+                        {
+                          "text": "✅ 清理測試畫布完成: cmq0h2ztf0005113jwlrk04hy\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:17:18.620Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-40c0f0383856f15c350b",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 183,
+              "column": 7
+            },
+            {
+              "title": "TextV2 出現在 layers 面板中",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 24480,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🚀 開始設置測試環境...\n"
+                        },
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 建立 Canvas: cmq0h3k7c000dzq5279bklztb\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ 測試環境設置成功\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增 TextV2，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: textV2\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取第一個物件: textV2\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：TextV2 出現在 layers 面板中\n"
+                        },
+                        {
+                          "text": "🔍 開始檢查每日領金幣彈窗...\n"
+                        },
+                        {
+                          "text": "❌ 每日領金幣彈窗未找到\n"
+                        },
+                        {
+                          "text": "✅ 成功刪除測試畫布: cmq0h3k7c000dzq5279bklztb\n"
+                        },
+                        {
+                          "text": "✅ 清理測試畫布完成: cmq0h3k7c000dzq5279bklztb\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:17:45.014Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-6923b5d4573d53833d69",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 209,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-push-sidebar.spec.ts",
+      "file": "canvas/canvas-push-sidebar.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Push-Style Sidebar & User Menu",
+          "file": "canvas/canvas-push-sidebar.spec.ts",
+          "line": 19,
+          "column": 6,
+          "specs": [
+            {
+              "title": "layers panel should be collapsed by default with bottom bar visible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12016,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers panel collapsed by default, bottom bar visible\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:24:26.966Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-223e8f1b468ce3931514",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 28,
+              "column": 7
+            },
+            {
+              "title": "clicking layers icon should expand panel as overlay",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11851,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers panel expands as overlay without pushing canvas\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:24:39.046Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-9675a6156dd94ea5a59b",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "pin/collapse toggle should close the expanded panel",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12239,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Pin toggle collapses the layers panel\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:24:50.948Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-2c32adaf22c3b8419a11",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 78,
+              "column": 7
+            },
+            {
+              "title": "clicking outside expanded panel should NOT collapse it",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12277,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Clicking outside does NOT collapse the panel\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:25:03.235Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-16177cc7eb22065eef19",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 108,
+              "column": 7
+            },
+            {
+              "title": "bottom bar should show user avatar and token count",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11183,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Bottom bar shows user avatar and token count\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:25:15.574Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-0abe6e03ab77c8641f72",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 129,
+              "column": 7
+            },
+            {
+              "title": "clicking user avatar should open upward dropdown menu",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11170,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ User avatar click opens upward dropdown\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:25:26.813Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-6c0db4e5efc32303adb3",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 143,
+              "column": 7
+            },
+            {
+              "title": "bottom bar should always be visible regardless of panel state",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13426,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "🔍 檢查 AI Chat 狀態...\n"
+                        },
+                        {
+                          "text": "✅ 通過關閉按鈕關閉 AI Chat\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素載入完成\n"
+                        },
+                        {
+                          "text": "✅ Bottom bar always visible regardless of panel state\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:25:38.068Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-24e858b42a3ed2b87a18",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 158,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "login/login-flow.spec.ts",
+      "file": "login/login-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "登入流程測試",
+          "file": "login/login-flow.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "完整的登入流程 - 從首頁到登入成功",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 18862,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 登入流程測試完成：所有步驟都成功執行\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:18:09.534Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9baefabce98ea24ee76d-87de03f1a3c1c8406c2f",
+              "file": "login/login-flow.spec.ts",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "登入彈窗正確顯示所有選項",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5414,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:18:28.436Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9baefabce98ea24ee76d-3d7a04ac2ff82d94c538",
+              "file": "login/login-flow.spec.ts",
+              "line": 14,
+              "column": 7
+            },
+            {
+              "title": "電子郵件登入表單正確顯示",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5991,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:18:33.882Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9baefabce98ea24ee76d-9e834c32b318155dc866",
+              "file": "login/login-flow.spec.ts",
+              "line": 38,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "navigation/redesign-header-nav.spec.ts",
+      "file": "navigation/redesign-header-nav.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Redesign header & floating nav (guest)",
+          "file": "navigation/redesign-header-nav.spec.ts",
+          "line": 11,
+          "column": 6,
+          "specs": [
+            {
+              "title": "未登入：generate 頁顯示頂欄、FloatingNav，且主版面不再掛載 AppSidebar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4735,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:18:39.911Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "05d2b92632a993f2e8fe-8cd5bc6040e9988396b9",
+              "file": "navigation/redesign-header-nav.spec.ts",
+              "line": 14,
+              "column": 7
+            },
+            {
+              "title": "未登入：首頁不顯示全域 Footer；子路徑顯示 Footer",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9200,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:18:44.678Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "05d2b92632a993f2e8fe-d233b3d63b014d4895b0",
+              "file": "navigation/redesign-header-nav.spec.ts",
+              "line": 24,
+              "column": 7
+            },
+            {
+              "title": "未登入：由 FloatingNav 導向 canvas 列表",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5666,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:18:53.950Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "05d2b92632a993f2e8fe-e7106d4a4221b575103f",
+              "file": "navigation/redesign-header-nav.spec.ts",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "未登入：小螢幕以漢堡選單開啟導航",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4747,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:18:59.650Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "05d2b92632a993f2e8fe-87970d34b2eff76f4eef",
+              "file": "navigation/redesign-header-nav.spec.ts",
+              "line": 46,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Redesign header & floating nav (authenticated)",
+          "file": "navigation/redesign-header-nav.spec.ts",
+          "line": 59,
+          "column": 6,
+          "specs": [
+            {
+              "title": "已登入：桌機顯示邀請碼按鈕與使用者選單",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5841,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-05T05:19:04.444Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "05d2b92632a993f2e8fe-1435705979fa4585a8ac",
+              "file": "navigation/redesign-header-nav.spec.ts",
+              "line": 60,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "onboarding/user-onboarding.spec.ts",
+      "file": "onboarding/user-onboarding.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Journey #1: User Onboarding",
+          "file": "onboarding/user-onboarding.spec.ts",
+          "line": 11,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Discord Signup",
+              "file": "onboarding/user-onboarding.spec.ts",
+              "line": 12,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should see signup with Discord button",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 5606,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "✅ Discord signup button is visible and accessible\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:19:10.350Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "9f3196077623e97efa33-5ccc326c3b56ba1afb24",
+                  "file": "onboarding/user-onboarding.spec.ts",
+                  "line": 16,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Invitation Code",
+              "file": "onboarding/user-onboarding.spec.ts",
+              "line": 40,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should see coins increase after applying invitation code",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "/home/runner/work/gazai/gazai/tests/e2e/onboarding/user-onboarding.spec.ts",
+                            "line": 66,
+                            "column": 14
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "skipped",
+                          "duration": 310,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "⚠️  TEST_INVITATION_CODE not set - skipping test\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-05T05:19:15.998Z",
+                          "annotations": [
+                            {
+                              "type": "skip",
+                              "location": {
+                                "file": "/home/runner/work/gazai/gazai/tests/e2e/onboarding/user-onboarding.spec.ts",
+                                "line": 66,
+                                "column": 14
+                              }
+                            }
+                          ],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "9f3196077623e97efa33-abff7504c34194adc388",
+                  "file": "onboarding/user-onboarding.spec.ts",
+                  "line": 41,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-06-05T05:09:58.639Z",
+    "duration": 968326.421,
+    "expected": 40,
+    "skipped": 2,
+    "unexpected": 0,
+    "flaky": 1
+  }
+}
