@@ -1,0 +1,2449 @@
+{
+  "config": {
+    "argv": [
+      "/Users/rpa/actions-runner/_work/_tool/node/24.19.0/x64/bin/node",
+      "/Users/rpa/actions-runner/_work/gazai/gazai/node_modules/@playwright/test/cli.js",
+      "test",
+      "--project=chromium"
+    ],
+    "configFile": "/Users/rpa/actions-runner/_work/gazai/gazai/playwright.config.ts",
+    "rootDir": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 10,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/gazai-io/gazai/commit/a245279f4de66e711d656f8bd05bd5845477b38d",
+        "commitHash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+        "buildHref": "https://github.com/gazai-io/gazai/actions/runs/37948995221"
+      },
+      "gitCommit": {
+        "shortHash": "a245279f4",
+        "hash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+        "subject": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool",
+        "body": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool\n\nfeat(TSK-5536): run AiTools from Gazai-chan chat and the home page",
+        "author": {
+          "name": "katie5413",
+          "email": "katie87827@gmail.com",
+          "time": 1791558280000
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "time": 1791558280000
+        },
+        "branch": "develop"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/rpa/actions-runner/_work/gazai/gazai/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/gazai-io/gazai/commit/a245279f4de66e711d656f8bd05bd5845477b38d",
+            "commitHash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "buildHref": "https://github.com/gazai-io/gazai/actions/runs/37948995221"
+          },
+          "gitCommit": {
+            "shortHash": "a245279f4",
+            "hash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "subject": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool",
+            "body": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool\n\nfeat(TSK-5536): run AiTools from Gazai-chan chat and the home page",
+            "author": {
+              "name": "katie5413",
+              "email": "katie87827@gmail.com",
+              "time": 1791558280000
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com",
+              "time": 1791558280000
+            },
+            "branch": "develop"
+          },
+          "actualWorkers": 1
+        },
+        "id": "setup",
+        "name": "setup",
+        "testDir": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/auth\\.setup\\.ts/"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/rpa/actions-runner/_work/gazai/gazai/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/gazai-io/gazai/commit/a245279f4de66e711d656f8bd05bd5845477b38d",
+            "commitHash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "buildHref": "https://github.com/gazai-io/gazai/actions/runs/37948995221"
+          },
+          "gitCommit": {
+            "shortHash": "a245279f4",
+            "hash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "subject": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool",
+            "body": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool\n\nfeat(TSK-5536): run AiTools from Gazai-chan chat and the home page",
+            "author": {
+              "name": "katie5413",
+              "email": "katie87827@gmail.com",
+              "time": 1791558280000
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com",
+              "time": 1791558280000
+            },
+            "branch": "develop"
+          },
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e",
+        "testIgnore": [
+          "/tests\\/e2e\\/regression\\//"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/rpa/actions-runner/_work/gazai/gazai/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/gazai-io/gazai/commit/a245279f4de66e711d656f8bd05bd5845477b38d",
+            "commitHash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "buildHref": "https://github.com/gazai-io/gazai/actions/runs/37948995221"
+          },
+          "gitCommit": {
+            "shortHash": "a245279f4",
+            "hash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "subject": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool",
+            "body": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool\n\nfeat(TSK-5536): run AiTools from Gazai-chan chat and the home page",
+            "author": {
+              "name": "katie5413",
+              "email": "katie87827@gmail.com",
+              "time": 1791558280000
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com",
+              "time": 1791558280000
+            },
+            "branch": "develop"
+          },
+          "actualWorkers": 1
+        },
+        "id": "regression-setup",
+        "name": "regression-setup",
+        "testDir": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/tests\\/e2e\\/regression\\/regression\\.setup\\.ts/"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/rpa/actions-runner/_work/gazai/gazai/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/gazai-io/gazai/commit/a245279f4de66e711d656f8bd05bd5845477b38d",
+            "commitHash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "buildHref": "https://github.com/gazai-io/gazai/actions/runs/37948995221"
+          },
+          "gitCommit": {
+            "shortHash": "a245279f4",
+            "hash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "subject": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool",
+            "body": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool\n\nfeat(TSK-5536): run AiTools from Gazai-chan chat and the home page",
+            "author": {
+              "name": "katie5413",
+              "email": "katie87827@gmail.com",
+              "time": 1791558280000
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com",
+              "time": 1791558280000
+            },
+            "branch": "develop"
+          },
+          "actualWorkers": 1
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/tests\\/e2e\\/regression\\/.*\\.spec\\.ts/"
+        ],
+        "timeout": 600000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/rpa/actions-runner/_work/gazai/gazai/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/gazai-io/gazai/commit/a245279f4de66e711d656f8bd05bd5845477b38d",
+            "commitHash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "buildHref": "https://github.com/gazai-io/gazai/actions/runs/37948995221"
+          },
+          "gitCommit": {
+            "shortHash": "a245279f4",
+            "hash": "a245279f4de66e711d656f8bd05bd5845477b38d",
+            "subject": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool",
+            "body": "Merge pull request #1785 from gazai-io/feat/TSK-5536-gazai-chan-ai-tool\n\nfeat(TSK-5536): run AiTools from Gazai-chan chat and the home page",
+            "author": {
+              "name": "katie5413",
+              "email": "katie87827@gmail.com",
+              "time": 1791558280000
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com",
+              "time": 1791558280000
+            },
+            "branch": "develop"
+          },
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e",
+        "snapshotDir": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "https://test.gazai.io",
+          "navigationTimeout": 30000,
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "args": [
+              "--disable-dev-shm-usage",
+              "--disable-extensions",
+              "--disable-gpu",
+              "--no-sandbox",
+              "--disable-setuid-sandbox",
+              "--disable-background-timer-throttling",
+              "--disable-backgrounding-occluded-windows",
+              "--disable-renderer-backgrounding"
+            ]
+          },
+          "permissions": [
+            "clipboard-read",
+            "clipboard-write"
+          ],
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "video": "off",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "storageState": ".auth/e2e-user.json"
+        },
+        "dependencies": [
+          "setup"
+        ],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report",
+          "host": "0.0.0.0"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth.setup.ts",
+      "file": "auth.setup.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "authenticate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13182,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🚀 E2E Auth Setup: Logging in to save authentication state...\n"
+                    },
+                    {
+                      "text": "   Target: https://test.gazai.io\n"
+                    },
+                    {
+                      "text": "   User: e2e@gazai.io\n"
+                    },
+                    {
+                      "text": "   ✅ Authentication state saved to: /Users/rpa/actions-runner/_work/gazai/gazai/.auth/e2e-user.json\n"
+                    },
+                    {
+                      "text": "🎉 Auth setup complete! All tests will reuse this session.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-09T15:14:40.800Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "17e3fe6f4d9d8bd79c6b-60f085b113a677673906",
+          "file": "auth.setup.ts",
+          "line": 14,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-basic.spec.ts",
+      "file": "canvas/canvas-basic.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas 未登入測試",
+          "file": "canvas/canvas-basic.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "未登入時不能使用 Canvas 功能",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4382,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 未登入狀態驗證通過\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:14:55.220Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "73589ae0195e21f692b3-231ef3e88ca4d4cea704",
+              "file": "canvas/canvas-basic.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-creation.spec.ts",
+      "file": "canvas/canvas-creation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Journey #2: Canvas Creation",
+          "file": "canvas/canvas-creation.spec.ts",
+          "line": 15,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Creating Canvas",
+              "file": "canvas/canvas-creation.spec.ts",
+              "line": 36,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should navigate to canvas page when clicking create new canvas",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 14356,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "✅ 對話框檢查完成\n"
+                            },
+                            {
+                              "text": "✅ 初始對話框處理完成\n"
+                            },
+                            {
+                              "text": "✅ Canvas editor 載入完成\n"
+                            },
+                            {
+                              "text": "✅ Created canvas and landed on canvas page\n"
+                            },
+                            {
+                              "text": "🧹 Cleaned up canvas: cmv13wyfd00048vlhyfjmma3s\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-10-09T15:14:59.851Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b249570ce7e22d46688f-b76f7e7d14141586d4e3",
+                  "file": "canvas/canvas-creation.spec.ts",
+                  "line": 37,
+                  "column": 9
+                },
+                {
+                  "title": "Should rename newly created canvas",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 19000,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "✅ 對話框檢查完成\n"
+                            },
+                            {
+                              "text": "✅ 初始對話框處理完成\n"
+                            },
+                            {
+                              "text": "✅ Canvas editor 載入完成\n"
+                            },
+                            {
+                              "text": "✏️  Renaming canvas cmv13x8qi00088vlht4bl7da0 to: Regression Test 1791558920839\n"
+                            },
+                            {
+                              "text": "✅ Canvas renamed successfully to: Regression Test 1791558920839\n"
+                            },
+                            {
+                              "text": "✅ Canvas renamed to: Regression Test 1791558920839\n"
+                            },
+                            {
+                              "text": "🧹 Cleaned up canvas: cmv13x8qi00088vlht4bl7da0\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-10-09T15:15:14.225Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b249570ce7e22d46688f-9ac56bcc2ea4d5e29896",
+                  "file": "canvas/canvas-creation.spec.ts",
+                  "line": 62,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-editor-controls.spec.ts",
+      "file": "canvas/canvas-editor-controls.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas editor controls",
+          "file": "canvas/canvas-editor-controls.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "shows the current editor shell and opens properties from the canvas name",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5352,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:17:04.329Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4122789a1216a76fee7d-b54e9424f956cc727171",
+              "file": "canvas/canvas-editor-controls.spec.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "accepts integer zoom input, clamps the maximum, and restores the value",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7644,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:17:16.738Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4122789a1216a76fee7d-47ff416e0eb3750eba52",
+              "file": "canvas/canvas-editor-controls.spec.ts",
+              "line": 32,
+              "column": 7
+            },
+            {
+              "title": "lists Fit All in shortcuts and collapses or expands the minimap",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6738,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:17:24.409Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4122789a1216a76fee7d-819546849c6074247b2a",
+              "file": "canvas/canvas-editor-controls.spec.ts",
+              "line": 52,
+              "column": 7
+            },
+            {
+              "title": "switches the editor theme and can restore the original theme",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5686,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:17:31.167Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4122789a1216a76fee7d-01fce41eb290e19d1743",
+              "file": "canvas/canvas-editor-controls.spec.ts",
+              "line": 73,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-gallery.spec.ts",
+      "file": "canvas/canvas-gallery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Journey #2: Canvas Gallery",
+          "file": "canvas/canvas-gallery.spec.ts",
+          "line": 15,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Navigate to Canvas Drafts Page",
+              "file": "canvas/canvas-gallery.spec.ts",
+              "line": 22,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should navigate to canvas drafts page and see canvas gallery",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 3723,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "✅ Successfully navigated to canvas gallery page\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-10-09T15:15:33.253Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-ceee89a727a9d6a808fe",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 23,
+                  "column": 9
+                },
+                {
+                  "title": "Should show create new canvas entry without canvas-count quota",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 7736,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "📊 Canvas gallery: no per-plan canvas count quota UI (unlimited canvases)\n"
+                            },
+                            {
+                              "text": "✅ Create canvas card visible; no canvas number cap in UI\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-10-09T15:15:36.992Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-9d93f2a77b1c883ab1d1",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 40,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Renaming Canvases",
+              "file": "canvas/canvas-gallery.spec.ts",
+              "line": 52,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should rename a canvas from gallery more-options",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 16732,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "✅ 對話框檢查完成\n"
+                            },
+                            {
+                              "text": "✅ 初始對話框處理完成\n"
+                            },
+                            {
+                              "text": "✅ Canvas editor 載入完成\n"
+                            },
+                            {
+                              "text": "✅ 成功編輯畫布名稱: Gallery Rename 1791558951348\n"
+                            },
+                            {
+                              "text": "✅ 畫布名稱驗證成功: Gallery Rename 1791558951348\n"
+                            },
+                            {
+                              "text": "✅ Canvas renamed from gallery to: Gallery Rename 1791558951348\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-10-09T15:15:44.741Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-62de6abf3a1cecf2889f",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 53,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Deleting Canvas",
+              "file": "canvas/canvas-gallery.spec.ts",
+              "line": 72,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Should delete a non-sample canvas and remove it from the gallery",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 90000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 15806,
+                          "errors": [],
+                          "stdout": [
+                            {
+                              "text": "✅ 對話框檢查完成\n"
+                            },
+                            {
+                              "text": "✅ 初始對話框處理完成\n"
+                            },
+                            {
+                              "text": "✅ Canvas editor 載入完成\n"
+                            },
+                            {
+                              "text": "✅ Non-sample canvas deleted and removed from the gallery\n"
+                            }
+                          ],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-10-09T15:16:01.489Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "deaa5cff5a649377a2a4-4897d31d7bf6dc89f9c1",
+                  "file": "canvas/canvas-gallery.spec.ts",
+                  "line": 73,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-layout.spec.ts",
+      "file": "canvas/canvas-layout.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Layout - No Global Navigation",
+          "file": "canvas/canvas-layout.spec.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "canvas list shows global header; detail has no header or AppSidebar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12288,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "✅ 成功編輯畫布名稱: Layout Test 1791559064791\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:17:36.876Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "380abb7e1b5c7152a3d8-81bd7566612bac1b26fb",
+              "file": "canvas/canvas-layout.spec.ts",
+              "line": 21,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-drawing.spec.ts",
+      "file": "canvas/canvas-object-drawing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas drawing object",
+          "file": "canvas/canvas-object-drawing.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "creates a brush stroke and renders its path in the minimap",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7985,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "📊 layers 中 drawing 物件數量: 1\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取物件: drawing (8d7eb8cf-492e-422e-9e6f-a3065ae9ede5)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 drawing 物件數量: 0\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:17:49.192Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "85ab3fffd069f28651bc-636e4a35b3670cf5fa48",
+              "file": "canvas/canvas-object-drawing.spec.ts",
+              "line": 5,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-panel.spec.ts",
+      "file": "canvas/canvas-object-panel.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Panel 物件操作測試",
+          "file": "canvas/canvas-object-panel.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "可以建立新的 panel",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9486,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: panel\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: panel\n"
+                        },
+                        {
+                          "text": "🖱️  拖拽建立面板: 起始位置 (400, 0), 尺寸 300x300\n"
+                        },
+                        {
+                          "text": "🖱️  拖拽操作: (400, 0) → (700, 300)\n"
+                        },
+                        {
+                          "text": "✅ 在 layers 中找到物件類型: panel\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：建立新的 panel\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:17:57.196Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "98d107912f2c6a1752f9-3d52db283f93b4f4441f",
+              "file": "canvas/canvas-object-panel.spec.ts",
+              "line": 16,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-shape.spec.ts",
+      "file": "canvas/canvas-object-shape.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas Shape 物件操作測試",
+          "file": "canvas/canvas-object-shape.spec.ts",
+          "line": 11,
+          "column": 6,
+          "specs": [
+            {
+              "title": "可以建立、移動與刪除 shape 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 22242,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: circle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (500, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (500, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (500, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (500, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (500, 300)\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: rectangle\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (550, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (550, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (550, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (550, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (550, 300)\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: star\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (600, 300), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (600, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (600, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (600, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (600, 300)\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇形狀: polygon\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (650, 400), 選項: { retries: \u001b[33m3\u001b[39m, waitAfter: \u001b[33m800\u001b[39m, ensureFocus: \u001b[33mtrue\u001b[39m }\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (650, 400) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (650, 400)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (650, 400)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (800ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (650, 400)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 4\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "🖱️  移動物件: (550, 300) → (500, 350)\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取物件: shape (446b6ceb-2427-4081-ad74-79f7538ab522)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 shape 物件數量: 3\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:18:06.705Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f5fb6adffaa126df267-714dad9aaafedf63c7a7",
+              "file": "canvas/canvas-object-shape.spec.ts",
+              "line": 20,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-speech.spec.ts",
+      "file": "canvas/canvas-object-speech.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas 文字物件操作測試",
+          "file": "canvas/canvas-object-speech.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "綜合測試：所有功能組合使用",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 17084,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增文字，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: speech\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: speech\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取第一個物件: text\n"
+                        },
+                        {
+                          "text": "✅ 文字顏色已修改為: #FF6600\n"
+                        },
+                        {
+                          "text": "🔍 確保屬性面板可訪問...\n"
+                        },
+                        {
+                          "text": "✅ 屬性面板現在可以互動\n"
+                        },
+                        {
+                          "text": "✅ 文字方向已修改為: vertical\n"
+                        },
+                        {
+                          "text": "✅ 文字對齊已修改為: center\n"
+                        },
+                        {
+                          "text": "🔄 粗體狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "🔄 斜體狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "🔄 底線狀態切換: false → true\n"
+                        },
+                        {
+                          "text": "✅ 文字樣式已修改完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡樣式已修改為: cloud-1\n"
+                        },
+                        {
+                          "text": "✅ 氣泡背景色已修改為: #FFFF00\n"
+                        },
+                        {
+                          "text": "✅ 氣泡匡線顏色已修改為: #FF0000\n"
+                        },
+                        {
+                          "text": "✅ 氣泡尾巴已開啟\n"
+                        },
+                        {
+                          "text": "🔍 開始驗證所有設置...\n"
+                        },
+                        {
+                          "text": "✅ 文字內容驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字顏色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字方向驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字對齊驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 文字樣式驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡背景色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡框線顏色驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 氣泡尾巴狀態驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 所有設置驗證完成\n"
+                        },
+                        {
+                          "text": "✅ 測試完成：所有功能綜合使用\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:18:28.972Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dcca6fd7c28e4bbb7850-af2110b188b81dc2d7d0",
+              "file": "canvas/canvas-object-speech.spec.ts",
+              "line": 20,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-object-text-v2.spec.ts",
+      "file": "canvas/canvas-object-text-v2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas TextV2 物件操作測試",
+          "file": "canvas/canvas-object-text-v2.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "從工具列建立並編輯 TextV2 文字與字級",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7329,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已開啟\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 1\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取物件: textV2 (e46b05b1-4708-4f5f-aa76-fd1ecb64af9f)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:18:46.081Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-9059595bf4aca4078205",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "使用 T 快捷鍵建立並複製貼上 TextV2",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9935,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 0\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: select\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: select\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 1\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取第一個物件: textV2\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 2\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:18:53.432Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-565ee6debaf11b59df55",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "撤銷、重做並刪除 TextV2 物件",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10811,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        },
+                        {
+                          "text": "✅ Layers 面板已打開\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 0\n"
+                        },
+                        {
+                          "text": "📝 開始在位置 (400, 300) 新增 TextV2，內容: 預設文字\n"
+                        },
+                        {
+                          "text": "🔧 開始選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "✅ 成功選擇工具: textV2\n"
+                        },
+                        {
+                          "text": "🎯 開始 clickCanvas 操作: 位置 (400, 300), 選項: \u001b[90mundefined\u001b[39m\n"
+                        },
+                        {
+                          "text": "📍 嘗試獲取 Canvas 元素...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 元素獲取成功\n"
+                        },
+                        {
+                          "text": "✅ Canvas 焦點設定成功\n"
+                        },
+                        {
+                          "text": "🎯 嘗試點擊 Canvas 位置 (400, 300) - 第 1/3 次\n"
+                        },
+                        {
+                          "text": "📍 計算絕對位置: (400, 300)\n"
+                        },
+                        {
+                          "text": "🖱️  使用原生鼠標 API 點擊位置 (400, 300)...\n"
+                        },
+                        {
+                          "text": "✅ 原生鼠標點擊完成\n"
+                        },
+                        {
+                          "text": "⏱️  等待點擊後響應 (500ms)...\n"
+                        },
+                        {
+                          "text": "✅ Canvas 點擊成功: (400, 300)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 1\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 0\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 1\n"
+                        },
+                        {
+                          "text": "✅ 從 layers 中選取物件: textV2 (a1158a96-3fd9-49f2-91b6-dfc77bd8bbcd)\n"
+                        },
+                        {
+                          "text": "📊 layers 中 textV2 物件數量: 0\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:19:03.381Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1898f47ab8ffd456d255-93a1ba19ff1cc431b027",
+              "file": "canvas/canvas-object-text-v2.spec.ts",
+              "line": 63,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "canvas/canvas-push-sidebar.spec.ts",
+      "file": "canvas/canvas-push-sidebar.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Canvas overlay sidebar and user menu",
+          "file": "canvas/canvas-push-sidebar.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "keeps the bottom bar visible while the layers overlay opens and closes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5938,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:19:14.214Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-80b3e626de60ffe4ba6d",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "shows the balance and opens the user menu",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5999,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:19:20.171Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-2882648d962dec4e43c3",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 44,
+              "column": 7
+            },
+            {
+              "title": "preserves the saved dark theme when changing language",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 270000,
+                  "annotations": [
+                    {
+                      "type": "slow",
+                      "location": {
+                        "file": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e/canvas/canvas-push-sidebar.spec.ts",
+                        "line": 57,
+                        "column": 10
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7907,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 對話框檢查完成\n"
+                        },
+                        {
+                          "text": "✅ 初始對話框處理完成\n"
+                        },
+                        {
+                          "text": "✅ Canvas editor 載入完成\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:19:26.192Z",
+                      "annotations": [
+                        {
+                          "type": "slow",
+                          "location": {
+                            "file": "/Users/rpa/actions-runner/_work/gazai/gazai/tests/e2e/canvas/canvas-push-sidebar.spec.ts",
+                            "line": 57,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "158f3914c0e8ffe38d55-17a24adb6b85316f34f7",
+              "file": "canvas/canvas-push-sidebar.spec.ts",
+              "line": 54,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "frontend/dark-mode.spec.ts",
+      "file": "frontend/dark-mode.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Frontend dark mode",
+          "file": "frontend/dark-mode.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "uses the saved dark theme on a supported frontend route",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4885,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:17.323Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a80c72a84e5175d589a9-1c64e2a177766016b9c4",
+              "file": "frontend/dark-mode.spec.ts",
+              "line": 8,
+              "column": 7
+            },
+            {
+              "title": "lets a guest switch directly between Light and Dark",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2873,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:22.226Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a80c72a84e5175d589a9-c208a401ae2a8dc95e65",
+              "file": "frontend/dark-mode.spec.ts",
+              "line": 28,
+              "column": 7
+            },
+            {
+              "title": "renders the guest landing in the saved dark theme",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3122,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:25.110Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a80c72a84e5175d589a9-7423782f659c281ce910",
+              "file": "frontend/dark-mode.spec.ts",
+              "line": 62,
+              "column": 7
+            },
+            {
+              "title": "follows the system theme on a guest first visit to the landing",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2589,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:28.244Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a80c72a84e5175d589a9-f6ccd1718f706cfc7da1",
+              "file": "frontend/dark-mode.spec.ts",
+              "line": 79,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Authenticated landing dark mode",
+          "file": "frontend/dark-mode.spec.ts",
+          "line": 97,
+          "column": 6,
+          "specs": [
+            {
+              "title": "renders signed-in content in the saved dark theme",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2569,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:30.843Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a80c72a84e5175d589a9-4b3b2219c64bdc83f651",
+              "file": "frontend/dark-mode.spec.ts",
+              "line": 98,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "login/login-flow.spec.ts",
+      "file": "login/login-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "登入流程測試",
+          "file": "login/login-flow.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "完整的登入流程 - 從首頁到登入成功",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11860,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        },
+                        {
+                          "text": "✅ 登入流程測試完成：所有步驟都成功執行\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:33.430Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9baefabce98ea24ee76d-87de03f1a3c1c8406c2f",
+              "file": "login/login-flow.spec.ts",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "登入彈窗顯示所有登入方式與 Email 表單",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8523,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:45.304Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9baefabce98ea24ee76d-edfc2f170c46305bad3e",
+              "file": "login/login-flow.spec.ts",
+              "line": 14,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "navigation/header-nav.spec.ts",
+      "file": "navigation/header-nav.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Header & floating nav visibility",
+          "file": "navigation/header-nav.spec.ts",
+          "line": 11,
+          "column": 6,
+          "specs": [
+            {
+              "title": "未登入：顯示 Header、FloatingNav 與登入按鈕",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4430,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:53.843Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "60dd05fffe55f11c7f7e-93aba902a356f118b056",
+              "file": "navigation/header-nav.spec.ts",
+              "line": 14,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Header & floating nav authenticated visibility",
+          "file": "navigation/header-nav.spec.ts",
+          "line": 26,
+          "column": 6,
+          "specs": [
+            {
+              "title": "已登入：顯示使用者操作，不顯示登入按鈕",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5211,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✅ 登入成功\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-09T15:16:58.284Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "60dd05fffe55f11c7f7e-bad2a426b3d4cc957979",
+              "file": "navigation/header-nav.spec.ts",
+              "line": 27,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-09T15:14:39.929Z",
+    "duration": 302189.245,
+    "expected": 32,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
